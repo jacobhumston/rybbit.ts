@@ -4,6 +4,12 @@
  */
 export type DateString = `${number}-${number}-${number}`;
 
+/**
+ * An ISO 8601 formatted timestamp.
+ * Example: `2024-01-31T14:00:00.000Z`
+ */
+export type Timestamp = string;
+
 /** List of timezones. */
 export type TimeZone =
     | 'system'

@@ -2,5 +2,10 @@
     "$schema": "https://typedoc.org/schema.json",
     "entryPoints": ["./src/index.ts"],
     "out": "docs",
-    "githubPages": true
+    "githubPages": true,
+    "externalSymbolLinkMappings": {
+        "typescript": {
+            "Date": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
+        }
+    }
 }

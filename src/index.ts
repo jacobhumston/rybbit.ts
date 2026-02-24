@@ -9,6 +9,7 @@ export type {
     Order,
     Parameter,
     SortBy,
+    Timestamp,
     TimeZone
 } from './types.js';
 export { toDateString } from './utility.js';
