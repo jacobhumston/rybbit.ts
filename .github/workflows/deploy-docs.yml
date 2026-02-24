@@ -1,51 +1,58 @@
-name: Deploy Docs
+name: Deploy Documentation
 
 on:
     push:
         branches:
             - main
+    workflow_dispatch:
 
 jobs:
-    deploy:
+    deploy-docs:
         runs-on: ubuntu-latest
+
+        permissions:
+            contents: write
 
         steps:
             - name: Checkout main branch
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   ref: main
+                  path: main
 
-            - name: Install Bun
-              run: curl -fsSL https://bun.com/install | bash
-
-            - name: Add Bun to path
-              run: source /home/runner/.bash_profile
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
 
             - name: Install dependencies
+              working-directory: ./main
               run: bun install
 
             - name: Generate documentation
+              working-directory: ./main
               run: bun docs
 
             - name: Checkout docs branch
-              run: |
-                  git fetch origin docs
-                  git checkout docs || git checkout --orphan docs
+              uses: actions/checkout@v4
+              with:
+                  ref: docs
+                  path: docs
 
-            - name: Clean docs branch
-              run: git rm -rf .
-
-            - name: Copy docs from main branch
+            - name: Clear docs branch
+              working-directory: ./docs
               run: |
-                  git checkout main -- docs
-                  mv docs/* .
+                  git rm -rf . || true
+                  git clean -fxd
 
-            - name: Commit changes to docs branch
+            - name: Copy documentation files
               run: |
-                  git config --local user.email "action@github.com"
-                  git config --local user.name "GitHub Action"
+                  cp -r main/docs/* docs/
+
+            - name: Commit and push changes
+              working-directory: ./docs
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
                   git add .
-                  git commit -m "Update documentation" || echo "No changes to commit"
-
-            - name: Push changes to docs branch
-              run: git push origin docs --force
+                  git diff --quiet && git diff --staged --quiet || (git commit -m "Update documentation from main branch" && git push)
