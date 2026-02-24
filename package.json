@@ -1,0 +1,24 @@
+{
+    "name": "rybbit.ts",
+    "type": "module",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "format": "bunx prettier --write --cache .",
+        "compile": "del dist/ && bunx tsc",
+        "docs": "del docs/ && bunx typedoc src/index.ts --options typedoc.json"
+    },
+    "devDependencies": {
+        "@types/node": "^25.3.0",
+        "del-cli": "^7.0.0",
+        "prettier": "^3.8.1",
+        "typedoc": "^0.28.17",
+        "typescript": "^5.9.3"
+    },
+    "files": [
+        "src/",
+        "LICENSE",
+        "README.md",
+        "package.json"
+    ]
+}
