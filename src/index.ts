@@ -4,7 +4,7 @@ export type {
     Dimension,
     Filter,
     FilterParameter,
-    FilterTypes,
+    FilterType,
     Mode,
     Order,
     Parameter,

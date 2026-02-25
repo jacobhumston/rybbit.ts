@@ -3,9 +3,5 @@
     "entryPoints": ["./src/index.ts"],
     "out": "docs",
     "githubPages": true,
-    "externalSymbolLinkMappings": {
-        "typescript": {
-            "Date": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date"
-        }
-    }
+    "plugin": ["typedoc-rhineai-theme", "typedoc-plugin-mdn-links"]
 }

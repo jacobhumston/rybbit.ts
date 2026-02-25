@@ -1,4 +1,15 @@
-import type { DateString, TimeZone, Filter, Bucket, Parameter, Timestamp, SortBy, Order, Mode } from './types.js';
+import type {
+    DateString,
+    TimeZone,
+    Filter,
+    Bucket,
+    Parameter,
+    Timestamp,
+    SortBy,
+    Order,
+    Mode,
+    Dimension
+} from './types.js';
 
 /** Route interfaces, used to construct URLs. */
 export class Routes {
@@ -380,7 +391,7 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns sessions that reached or dropped at a specific funnel step  */
+    /** `GET` Returns sessions that reached or dropped at a specific funnel step */
     getFunnelStepSessions(
         siteId: number,
         stepNumber: number,
@@ -415,9 +426,184 @@ export class Routes {
 
     // PERFORMANCE
 
+    /** `GET` Returns aggregate Core Web Vitals metrics */
+    getPerformanceOverview(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/performance/overview`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+        });
+    }
+
+    /** `GET` Returns performance metrics over time */
+    getPerformanceTimeSeries(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>,
+        bucket?: Bucket
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/performance/time-series`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            bucket: bucket
+        });
+    }
+
+    /** `GET` Returns performance breakdown by dimension */
+    getPerformanceByDimension(
+        siteId: number,
+        dimension: Dimension,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>,
+        page?: number,
+        limit?: number,
+        sortBy?: SortBy,
+        sortOrder?: Order
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/performance/by-dimension`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            dimension: dimension,
+            page: page?.toString(),
+            limit: limit?.toString(),
+            sort_by: sortBy,
+            sort_order: sortOrder
+        });
+    }
+
     // SESSIONS
+
+    /** `GET` Returns a paginated list of sessions */
+    getSessions(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>,
+        page?: number,
+        limit?: number,
+        userId?: string,
+        identifiedOnly?: boolean
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/sessions`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            page: page?.toString(),
+            limit: limit?.toString(),
+            user_id: userId,
+            identified_only: identifiedOnly?.toString()
+        });
+    }
+
+    /** `GET` Returns detailed session information with events */
+    getSession(siteId: number, sessionId: string, limit?: number, offset?: number): URL {
+        return this.#create(`/api/sites/${siteId}/sessions/${sessionId}`, {
+            limit: limit?.toString(),
+            offset: offset?.toString()
+        });
+    }
+
+    /** `GET` Returns aggregated session locations for map visualization */
+    getSessionLocations(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/session-locations`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+        });
+    }
 
     // USERS
 
+    /** `GET` Returns a paginated list of users */
+    getUsers(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>,
+        page?: number,
+        pageSize?: number,
+        sortBy?: SortBy,
+        sortOrder?: Order,
+        identifiedOnly?: boolean
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/users`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            page: page?.toString(),
+            page_size: pageSize?.toString(),
+            sort_by: sortBy,
+            sort_order: sortOrder,
+            identified_only: identifiedOnly?.toString()
+        });
+    }
+
+    /** `GET` Returns daily session counts for a specific user */
+    getUserSessionCount(siteId: number, userId: string, timezone?: TimeZone): URL {
+        return this.#create(`/api/sites/${siteId}/users/session-count`, {
+            user_id: userId,
+            timezone: timezone
+        });
+    }
+
+    /** `GET` Returns detailed user profile information */
+    getUserInfo(siteId: number, userId: string): URL {
+        return this.#create(`/api/sites/${siteId}/users/${userId}`);
+    }
+
     // MISC
+
+    /** `GET` Returns cohort-based retention analysis */
+    getRetention(siteId: number, mode?: Mode, range?: number): URL {
+        return this.#create(`/api/sites/${siteId}/retention`, {
+            mode: mode,
+            range: range?.toString()
+        });
+    }
+
+    /** `GET` Returns most common page navigation paths */
+    getJourneys(
+        siteId: number,
+        startDate?: DateString,
+        endDate?: DateString,
+        timezone?: TimeZone,
+        filters?: Array<Filter>,
+        steps?: number,
+        limit?: number
+    ): URL {
+        return this.#create(`/api/sites/${siteId}/users`, {
+            start_date: startDate,
+            end_date: endDate,
+            time_zone: timezone,
+            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            steps: steps?.toString(),
+            limit: limit?.toString()
+        });
+    }
 }

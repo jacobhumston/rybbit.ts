@@ -76,7 +76,16 @@ export type Parameter =
     | 'event_name';
 
 /** List of sort by choices. */
-export type SortBy = 'goalId' | 'name' | 'goalType' | 'createdAt';
+export type SortBy =
+    | 'goalId'
+    | 'name'
+    | 'goalType'
+    | 'createdAt'
+    | 'first_seen'
+    | 'last_seen'
+    | 'pageviews'
+    | 'sessions'
+    | 'events';
 
 /** Lust of order choices. */
 export type Order = 'asc' | 'desc';
@@ -106,15 +115,15 @@ export type FilterParameter =
     | 'language';
 
 /** List of filter types. */
-export type FilterTypes = 'equals' | 'not_equals' | 'contains' | 'not_contains' | 'regex';
+export type FilterType = 'equals' | 'not_equals' | 'contains' | 'not_contains' | 'regex';
 
 /** A filter object. */
 export interface Filter {
     /** {@linkcode FilterParameter Parameter} of this filter. */
     parameter: FilterParameter;
 
-    /** {@linkcode FilterTypes Type} of filter. */
-    type: FilterTypes;
+    /** {@linkcode FilterType Type} of filter. */
+    type: FilterType;
 
     /** Values of this filter. */
     value: Array<string>;
