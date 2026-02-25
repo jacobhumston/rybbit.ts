@@ -3,5 +3,6 @@
     "entryPoints": ["./src/index.ts"],
     "out": "docs",
     "githubPages": true,
-    "plugin": ["typedoc-rhineai-theme", "typedoc-plugin-mdn-links"]
+    "plugin": ["typedoc-rhineai-theme", "typedoc-plugin-mdn-links"],
+    "cname": "rybbit.lovely.sh"
 }
