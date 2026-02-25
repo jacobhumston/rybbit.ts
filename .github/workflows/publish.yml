@@ -43,17 +43,30 @@ jobs:
                   echo "version=$VERSION" >> $GITHUB_OUTPUT
                   echo "tag=v$VERSION" >> $GITHUB_OUTPUT
 
+            - name: Generate Release Notes
+              if: success()
+              id: release-notes
+              run: |
+                  PREV_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo "")
+                  COMMITS=$(git log ${PREV_TAG:+$PREV_TAG..}HEAD --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H)) - @%an" --no-merges)
+                  cat << EOF > release_notes.md
+                  ## Release ${{ steps.package-version.outputs.version }}
+                  
+                  Published to npm: https://www.npmjs.com/package/rybbit.ts/v/${{ steps.package-version.outputs.version }}
+                  
+                  ### Changes
+                  
+                  $COMMITS
+                  EOF
+                  
+                  echo "notes<<EOF" >> $GITHUB_OUTPUT
+                  cat release_notes.md >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
             - name: Create GitHub Release
               if: success()
-              uses: actions/create-release@v1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              uses: softprops/action-gh-release@v1
               with:
                   tag_name: ${{ steps.package-version.outputs.tag }}
-                  release_name: Release ${{ steps.package-version.outputs.tag }}
-                  body: |
-                      ## Release ${{ steps.package-version.outputs.version }}
-
-                      Published to npm: https://www.npmjs.com/package/rybbit.ts/v/${{ steps.package-version.outputs.version }}
-                  draft: false
-                  prerelease: false
+                  name: Release ${{ steps.package-version.outputs.tag }}
+                  body: ${{ steps.release-notes.outputs.notes }}
