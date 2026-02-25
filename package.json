@@ -19,7 +19,7 @@
         "typescript": "^5.9.3"
     },
     "files": [
-        "src/",
+        "dist/",
         "LICENSE",
         "README.md",
         "package.json"
