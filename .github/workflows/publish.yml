@@ -23,7 +23,7 @@ jobs:
 
             - name: Update NPM
               run: npm install -g npm@latest
-                
+
             - name: Install dependencies
               run: npm install
 
@@ -33,7 +33,7 @@ jobs:
             - name: Publish to npm
               id: npm-publish
               run: |
-               NODE_AUTH_TOKEN="" npm publish --provenance --access public
+                  NODE_AUTH_TOKEN="" npm publish --provenance --access public
 
             - name: Get package version
               if: success()

@@ -4,6 +4,11 @@
     "type": "module",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
+    "license": "MIT",
+    "homepage": "https://github.com/jacobhumston/rybbit.ts",
+    "repository": {
+        "url": "https://github.com/jacobhumston/rybbit.ts"
+    },
     "scripts": {
         "format": "bunx prettier --write --cache .",
         "compile": "del dist/ && bunx tsc",
