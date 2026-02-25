@@ -25,7 +25,7 @@ jobs:
               run: npm install
 
             - name: Build package
-              run: npm run compile
+              run: npm exec tsc
 
             - name: Publish to npm
               id: npm-publish
