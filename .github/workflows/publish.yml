@@ -1,0 +1,54 @@
+name: Publish Package
+
+on:
+    workflow_dispatch:
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+
+        permissions:
+            contents: write
+            id-token: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Install dependencies
+              run: bun install
+
+            - name: Build package
+              run: bun run compile
+
+            - name: Publish to npm
+              id: npm-publish
+              run: npm publish --provenance --access public
+
+            - name: Get package version
+              if: success()
+              id: package-version
+              run: |
+                  VERSION=$(node -p "require('./package.json').version")
+                  echo "version=$VERSION" >> $GITHUB_OUTPUT
+                  echo "tag=v$VERSION" >> $GITHUB_OUTPUT
+
+            - name: Create GitHub Release
+              if: success()
+              uses: actions/create-release@v1
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  tag_name: ${{ steps.package-version.outputs.tag }}
+                  release_name: Release ${{ steps.package-version.outputs.tag }}
+                  body: |
+                      ## Release ${{ steps.package-version.outputs.version }}
+
+                      Published to npm: https://www.npmjs.com/package/rybbit.ts/v/${{ steps.package-version.outputs.version }}
+                  draft: false
+                  prerelease: false
