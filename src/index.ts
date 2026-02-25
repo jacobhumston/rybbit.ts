@@ -12,5 +12,6 @@ export type {
     Timestamp,
     TimeZone
 } from './types.js';
-export { toDateString } from './utility.js';
+export { toDateString, handleRejection } from './utility.js';
 export { Routes } from './endpoints.js';
+export { request, type ErrorResponse } from './requests.js';

@@ -606,4 +606,9 @@ export class Routes {
             limit: limit?.toString()
         });
     }
+
+    /** `POST` Track events, etc */
+    track(): URL {
+        return this.#create(`/api/track`);
+    }
 }

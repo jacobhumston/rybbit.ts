@@ -51,14 +51,14 @@ jobs:
                   COMMITS=$(git log ${PREV_TAG:+$PREV_TAG..}HEAD --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H)) - @%an" --no-merges)
                   cat << EOF > release_notes.md
                   ## Release ${{ steps.package-version.outputs.version }}
-                  
+
                   Published to npm: https://www.npmjs.com/package/rybbit.ts/v/${{ steps.package-version.outputs.version }}
-                  
+
                   ### Changes
-                  
+
                   $COMMITS
                   EOF
-                  
+
                   echo "notes<<EOF" >> $GITHUB_OUTPUT
                   cat release_notes.md >> $GITHUB_OUTPUT
                   echo "EOF" >> $GITHUB_OUTPUT
