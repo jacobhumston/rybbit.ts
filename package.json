@@ -1,6 +1,6 @@
 {
     "name": "rybbit.ts",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "module",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -15,7 +15,7 @@
         "docs": "del docs/ && bunx typedoc src/index.ts --options typedoc.json"
     },
     "devDependencies": {
-        "@types/node": "^25.3.0",
+        "@types/node": "^25.3.1",
         "del-cli": "^7.0.0",
         "prettier": "^3.8.1",
         "typedoc": "^0.28.17",
