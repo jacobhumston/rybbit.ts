@@ -20,11 +20,19 @@ export interface ErrorResponse {
  * @returns The response data.
  * @throws {Error} Error response.
  */
-export function request<T>(method: RequestInit['method'], url: URL, body?: any): Promise<T> {
+export function request<T>(
+    apiKey: string,
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE',
+    url: URL,
+    body?: any
+): Promise<T> {
     return new Promise(async (resolve, reject: (reason: ErrorResponse) => void) => {
         const response = await fetch(url, {
-            method,
-            body: body ? JSON.stringify(body) : undefined
+            method: method,
+            body: body ? JSON.stringify(body) : undefined,
+            headers: {
+                Authorization: `Bearer ${apiKey}`
+            }
         }).catch((error) => reject({ status: -1, error: `${error}` }));
 
         if (response && response.status) {

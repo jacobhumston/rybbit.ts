@@ -8,7 +8,8 @@ import type {
     SortBy,
     Order,
     Mode,
-    Dimension
+    Dimension,
+    SiteId
 } from './types.js';
 
 /** Route interfaces, used to construct URLs. */
@@ -46,44 +47,44 @@ export class Routes {
 
     // SITES
 
-    /** `GET` Returns details for a specific site */
-    getSite(siteId: number): URL {
+    /** `GET` Returns details for a specific site. */
+    getSite(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}`);
     }
 
     /** `DELETE` Permanently deletes a site and all its data. Requires admin/owner role. */
-    deleteSite(siteId: number): URL {
+    deleteSite(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}`);
     }
 
     /** `PUT` Updates site configuration settings. Requires admin/owner role. */
-    updateSiteConfig(siteId: number): URL {
+    updateSiteConfig(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/config`);
     }
 
-    /** `GET` Returns the list of excluded IP addresses */
-    getExcludedIPs(siteId: number): URL {
+    /** `GET` Returns the list of excluded IP addresses. */
+    getExcludedIPs(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/excluded-ips`);
     }
 
-    /** `GET` Returns the list of excluded country codes */
-    getExcludedCountries(siteId: number): URL {
+    /** `GET` Returns the list of excluded country codes. */
+    getExcludedCountries(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/excluded-counties`);
     }
 
-    /** `GET` Returns the private link key configuration */
-    getPrivateLinkConfig(siteId: number): URL {
+    /** `GET` Returns the private link key configuration. */
+    getPrivateLinkConfig(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/private-link-config`);
     }
 
     /** `POST` Generates or revokes a private link key. Requires admin/owner role. */
-    updatePrivateLinkConfig(siteId: number): URL {
+    updatePrivateLinkConfig(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/private-link-config`);
     }
 
     // ORGANIZATIONS
 
-    /** `GET` Returns all organizations the authenticated user is a member of, including all members for each organization */
+    /** `GET` Returns all organizations the authenticated user is a member of, including all members for each organization. */
     getMyOrganizations(): URL {
         return this.#create(`/api/organizations`);
     }
@@ -93,21 +94,21 @@ export class Routes {
         return this.#create(`/api/organizations/${organizationId}/sites`);
     }
 
-    /** `GET` Returns all members of an organization with user details */
+    /** `GET` Returns all members of an organization with user details. */
     getOrganizationMembers(organizationId: string): URL {
         return this.#create(`/api/organizations/${organizationId}/members`);
     }
 
-    /** `POST` Adds a user to an organization with a specified role */
+    /** `POST` Adds a user to an organization with a specified role. */
     addOrganizationMember(organizationId: string): URL {
         return this.#create(`/api/organizations/${organizationId}/members`);
     }
 
     // OVERVIEW
 
-    /** `GET` Returns high-level analytics metrics for a site */
+    /** `GET` Returns high-level analytics metrics for a site. */
     getOverview(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -121,9 +122,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns time-series analytics data broken down by time buckets */
+    /** `GET` Returns time-series analytics data broken down by time buckets. */
     getOverviewTimeSeries(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -139,9 +140,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns dimensional analytics broken down by a specific parameter */
+    /** `GET` Returns dimensional analytics broken down by a specific parameter. */
     getMetric(
-        siteId: number,
+        siteId: SiteId,
         parameter: Parameter,
         startDate?: DateString,
         endDate?: DateString,
@@ -161,8 +162,8 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns the count of active sessions within the specified time window */
-    getLiveVisitors(siteId: number, minutes?: number): URL {
+    /** `GET` Returns the count of active sessions within the specified time window. */
+    getLiveVisitors(siteId: SiteId, minutes?: number): URL {
         return this.#create(`/api/sites/${siteId}/live-user-count`, {
             minutes: minutes?.toString()
         });
@@ -170,9 +171,9 @@ export class Routes {
 
     // EVENTS
 
-    /** `GET` Returns a paginated list of events with cursor-based pagination */
+    /** `GET` Returns a paginated list of events with cursor-based pagination. */
     getEvents(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -192,9 +193,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns list of unique custom event names with counts */
+    /** `GET` Returns list of unique custom event names with counts. */
     getEventNames(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -208,9 +209,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns property key-value pairs for a specific event */
+    /** `GET` Returns property key-value pairs for a specific event. */
     getEventProperties(
-        siteId: number,
+        siteId: SiteId,
         eventName: string,
         startDate?: DateString,
         endDate?: DateString,
@@ -226,9 +227,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns outbound link clicks with occurrence counts */
+    /** `GET` Returns outbound link clicks with occurrence counts. */
     getOutboundLinks(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -244,9 +245,9 @@ export class Routes {
 
     // ERRORS
 
-    /** `GET` Returns unique error messages with occurrence and session counts */
+    /** `GET` Returns unique error messages with occurrence and session counts. */
     getErrorNames(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -264,9 +265,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns individual error occurrences with context and stack traces */
+    /** `GET` Returns individual error occurrences with context and stack traces. */
     getErrorEvents(
-        siteId: number,
+        siteId: SiteId,
         errorMessage: string,
         startDate?: DateString,
         endDate?: DateString,
@@ -286,9 +287,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns error occurrence counts over time */
+    /** `GET` Returns error occurrence counts over time. */
     getErrorTimeSeries(
-        siteId: number,
+        siteId: SiteId,
         errorMessage: string,
         startDate?: DateString,
         endDate?: DateString,
@@ -308,9 +309,9 @@ export class Routes {
 
     // GOALS
 
-    /** `GET` Returns paginated list of goals with conversion metrics */
+    /** `GET` Returns paginated list of goals with conversion metrics. */
     getGoals(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -332,9 +333,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns sessions that completed a specific goal */
+    /** `GET` Returns sessions that completed a specific goal. */
     getGoalSessions(
-        siteId: number,
+        siteId: SiteId,
         goalId: number,
         startDate?: DateString,
         endDate?: DateString,
@@ -353,31 +354,31 @@ export class Routes {
         });
     }
 
-    /** `POST` Creates a new goal */
-    createGoal(siteId: number): URL {
+    /** `POST` Creates a new goal. */
+    createGoal(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/goals`);
     }
 
-    /** `PUT` Updates an existing goal */
-    updateGoal(siteId: number, goalId: number): URL {
+    /** `PUT` Updates an existing goal. */
+    updateGoal(siteId: SiteId, goalId: number): URL {
         return this.#create(`/api/sites/${siteId}/goals/${goalId}`);
     }
 
-    /** `DELETE` Deletes a goal */
-    deleteGoal(siteId: number, goalId: number): URL {
+    /** `DELETE` Deletes a goal. */
+    deleteGoal(siteId: SiteId, goalId: number): URL {
         return this.#create(`/api/sites/${siteId}/goals/${goalId}`);
     }
 
     // FUNNELS
 
-    /** `GET` Returns all saved funnels for a site */
-    getFunnels(siteId: number): URL {
+    /** `GET` Returns all saved funnels for a site. */
+    getFunnels(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/funnels`);
     }
 
-    /** `GET` Analyzes funnel conversion data step-by-step */
+    /** `GET` Analyzes funnel conversion data step-by-step. */
     analyzeFunnel(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -391,9 +392,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns sessions that reached or dropped at a specific funnel step */
+    /** `GET` Returns sessions that reached or dropped at a specific funnel step. */
     getFunnelStepSessions(
-        siteId: number,
+        siteId: SiteId,
         stepNumber: number,
         mode: Mode,
         startDate?: DateString,
@@ -414,21 +415,21 @@ export class Routes {
         });
     }
 
-    /** `POST` Creates a saved funnel */
-    createFunnel(siteId: number): URL {
+    /** `POST` Creates a saved funnel. */
+    createFunnel(siteId: SiteId): URL {
         return this.#create(`/api/sites/${siteId}/funnels`);
     }
 
-    /** `DELETE` Deletes a saved funnel */
-    deleteFunnel(siteId: number, funnelId: number): URL {
+    /** `DELETE` Deletes a saved funnel. */
+    deleteFunnel(siteId: SiteId, funnelId: number): URL {
         return this.#create(`/api/sites/${siteId}/funnels/${funnelId}`);
     }
 
     // PERFORMANCE
 
-    /** `GET` Returns aggregate Core Web Vitals metrics */
+    /** `GET` Returns aggregate Core Web Vitals metrics. */
     getPerformanceOverview(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -442,9 +443,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns performance metrics over time */
+    /** `GET` Returns performance metrics over time. */
     getPerformanceTimeSeries(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -460,9 +461,9 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns performance breakdown by dimension */
+    /** `GET` Returns performance breakdown by dimension. */
     getPerformanceByDimension(
-        siteId: number,
+        siteId: SiteId,
         dimension: Dimension,
         startDate?: DateString,
         endDate?: DateString,
@@ -488,9 +489,9 @@ export class Routes {
 
     // SESSIONS
 
-    /** `GET` Returns a paginated list of sessions */
+    /** `GET` Returns a paginated list of sessions. */
     getSessions(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -512,17 +513,17 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns detailed session information with events */
-    getSession(siteId: number, sessionId: string, limit?: number, offset?: number): URL {
+    /** `GET` Returns detailed session information with events. */
+    getSession(siteId: SiteId, sessionId: string, limit?: number, offset?: number): URL {
         return this.#create(`/api/sites/${siteId}/sessions/${sessionId}`, {
             limit: limit?.toString(),
             offset: offset?.toString()
         });
     }
 
-    /** `GET` Returns aggregated session locations for map visualization */
+    /** `GET` Returns aggregated session locations for map visualization. */
     getSessionLocations(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -538,9 +539,9 @@ export class Routes {
 
     // USERS
 
-    /** `GET` Returns a paginated list of users */
+    /** `GET` Returns a paginated list of users. */
     getUsers(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -564,32 +565,32 @@ export class Routes {
         });
     }
 
-    /** `GET` Returns daily session counts for a specific user */
-    getUserSessionCount(siteId: number, userId: string, timezone?: TimeZone): URL {
+    /** `GET` Returns daily session counts for a specific user. */
+    getUserSessionCount(siteId: SiteId, userId: string, timezone?: TimeZone): URL {
         return this.#create(`/api/sites/${siteId}/users/session-count`, {
             user_id: userId,
             timezone: timezone
         });
     }
 
-    /** `GET` Returns detailed user profile information */
-    getUserInfo(siteId: number, userId: string): URL {
+    /** `GET` Returns detailed user profile information. */
+    getUserInfo(siteId: SiteId, userId: string): URL {
         return this.#create(`/api/sites/${siteId}/users/${userId}`);
     }
 
     // MISC
 
-    /** `GET` Returns cohort-based retention analysis */
-    getRetention(siteId: number, mode?: Mode, range?: number): URL {
+    /** `GET` Returns cohort-based retention analysis. */
+    getRetention(siteId: SiteId, mode?: Mode, range?: number): URL {
         return this.#create(`/api/sites/${siteId}/retention`, {
             mode: mode,
             range: range?.toString()
         });
     }
 
-    /** `GET` Returns most common page navigation paths */
+    /** `GET` Returns most common page navigation paths. */
     getJourneys(
-        siteId: number,
+        siteId: SiteId,
         startDate?: DateString,
         endDate?: DateString,
         timezone?: TimeZone,
@@ -607,7 +608,7 @@ export class Routes {
         });
     }
 
-    /** `POST` Track events, etc */
+    /** `POST` Track events, etc. */
     track(): URL {
         return this.#create(`/api/track`);
     }

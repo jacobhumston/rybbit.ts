@@ -128,3 +128,45 @@ export interface Filter {
     /** Values of this filter. */
     value: Array<string>;
 }
+
+/** `siteId` of a site. */
+export type SiteId = number;
+
+/** Response from `getSite`. */
+export interface GetSiteResponse {
+    id: string;
+    siteId: SiteId;
+    name: string;
+    domain: string;
+    createdAt: Timestamp;
+    updatedAt: Timestamp;
+    createdBy: string;
+    organizationId: string;
+    saltUserIds: boolean;
+    public: boolean;
+    blockBots: boolean;
+    trackIp: boolean;
+    isOwner: boolean;
+    sessionReplay: boolean;
+    webVitals: boolean;
+    trackErrors: boolean;
+    trackOutbound: boolean;
+    trackUrlParams: boolean;
+    trackInitialPageView: boolean;
+    trackSpaNavigation: boolean;
+    trackButtonClicks: boolean;
+    trackCopy: boolean;
+    trackFormInteractions: boolean;
+}
+
+/** Request body for `updateSitConfig`. */
+export interface UpdateSiteConfigRequestBody {
+    public?: boolean;
+    blockBots?: boolean;
+    excludedCountries?: Array<string>;
+}
+
+/** Request body for `updatePrivateLink`. */
+export interface UpdatePrivateLinkRequestBody {
+    action: 'revoke_private_link_key' | 'generate_private_link_key';
+}
