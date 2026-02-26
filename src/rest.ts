@@ -46,12 +46,12 @@ export class Rest {
         return request<any>(this.#apiKey, 'GET', this.routes.getExcludedCountries(this.siteId));
     }
 
-    /** Returns the private link key configuration */
+    /** Returns the private link key configuration. */
     async getPrivateLinkConfig(): Promise<any> {
         return request<any>(this.#apiKey, 'GET', this.routes.getPrivateLinkConfig(this.siteId));
     }
 
-    /** Returns the private link key configuration */
+    /** Generates or revokes a private link key. Requires admin/owner role. */
     async updatePrivateLinkConfig(action: UpdatePrivateLinkRequestBody['action']): Promise<any> {
         return request<any>(this.#apiKey, 'POST', this.routes.updatePrivateLinkConfig(this.siteId), {
             action

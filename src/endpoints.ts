@@ -598,7 +598,7 @@ export class Routes {
         steps?: number,
         limit?: number
     ): URL {
-        return this.#create(`/api/sites/${siteId}/users`, {
+        return this.#create(`/api/sites/${siteId}/journeys`, {
             start_date: startDate,
             end_date: endDate,
             time_zone: timezone,
