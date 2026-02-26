@@ -12,7 +12,9 @@ export type {
     Timestamp,
     TimeZone,
     GetSiteResponse,
-    SiteId
+    SiteId,
+    UpdatePrivateLinkRequestBody,
+    UpdateSiteConfigRequestBody
 } from './types.js';
 export { toDateString, handleRejection } from './utility.js';
 export { Routes } from './endpoints.js';

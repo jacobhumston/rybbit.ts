@@ -14,6 +14,8 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -48,7 +50,7 @@ jobs:
               id: release-notes
               run: |
                   PREV_TAG=$(git describe --abbrev=0 --tags $(git rev-list --tags --skip=1 --max-count=1) 2>/dev/null || echo "")
-                  COMMITS=$(git log ${PREV_TAG:+$PREV_TAG..}HEAD --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H)) - @%an" --no-merges)
+                  COMMITS=$(git log ${PREV_TAG:+$PREV_TAG..}HEAD --pretty=format:"- %s ([%h](https://github.com/${{ github.repository }}/commit/%H)) - %an" --no-merges)
                   cat << EOF > release_notes.md
                   ## Release ${{ steps.package-version.outputs.version }}
 
