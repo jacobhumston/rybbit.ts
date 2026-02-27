@@ -1,3 +1,6 @@
+/** Utility type to skip the first item of an array. */
+export type SkipFirstArrayItem<T extends any[]> = T extends [any, ...infer Rest] ? Rest : never;
+
 /**
  * A date with the format of `year-month-day`.
  * Example: `2019-02-24`
@@ -159,6 +162,12 @@ export interface GetSiteResponse {
     trackFormInteractions: boolean;
 }
 
+/** Success response. */
+export interface SuccessResponse {
+    /** Whether the request was successful or not. */
+    success: boolean;
+}
+
 /** Request body for `updateSitConfig`. */
 export interface UpdateSiteConfigRequestBody {
     public?: boolean;
@@ -169,4 +178,33 @@ export interface UpdateSiteConfigRequestBody {
 /** Request body for `updatePrivateLink`. */
 export interface UpdatePrivateLinkRequestBody {
     action: 'revoke_private_link_key' | 'generate_private_link_key';
+}
+
+/** Request body for `createSite`. */
+export interface CreateSiteRequestBody {
+    domain: string;
+    name: string;
+    public?: boolean;
+    blockBots?: boolean;
+    saltUserIds?: boolean;
+    excludedIPs?: Array<string>;
+    excludedCountries?: Array<string>;
+    sessionReplay?: boolean;
+    webVitals?: boolean;
+    trackErrors?: boolean;
+    trackOutbound?: boolean;
+    trackUrlParams?: boolean;
+    trackInitialPageView?: boolean;
+    trackSpaNavigation?: boolean;
+    trackIp?: boolean;
+    trackButtonClicks?: boolean;
+    trackCopy?: boolean;
+    trackFormInteractions?: boolean;
+    tags?: Array<string>;
+}
+
+/** Request body for `addOrganizationMember`. */
+export interface AddOrganizationMemberRequestBody {
+    email: string;
+    role: 'admin' | 'member' | 'owner';
 }

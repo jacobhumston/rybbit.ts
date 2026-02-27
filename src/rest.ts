@@ -1,6 +1,15 @@
 import { Routes } from './endpoints.js';
 import { request } from './requests.js';
-import type { GetSiteResponse, SiteId, UpdatePrivateLinkRequestBody, UpdateSiteConfigRequestBody } from './types.js';
+import type {
+    AddOrganizationMemberRequestBody,
+    CreateSiteRequestBody,
+    GetSiteResponse,
+    SiteId,
+    SkipFirstArrayItem,
+    SuccessResponse,
+    UpdatePrivateLinkRequestBody,
+    UpdateSiteConfigRequestBody
+} from './types.js';
 
 /** Rest methods to invoke the API. */
 export class Rest {
@@ -27,8 +36,8 @@ export class Rest {
     }
 
     /** Permanently deletes a site and all its data. Requires admin/owner role. */
-    async deleteSite(): Promise<any> {
-        return request<any>(this.#apiKey, 'DELETE', this.routes.deleteSite(this.siteId));
+    async deleteSite(): Promise<SuccessResponse> {
+        return request<SuccessResponse>(this.#apiKey, 'DELETE', this.routes.deleteSite(this.siteId));
     }
 
     /** Updates site configuration settings. Requires admin/owner role. */
@@ -60,13 +69,106 @@ export class Rest {
 
     // ORGANIZATION
 
+    /** Returns all organizations the authenticated user is a member of, including all members for each organization. */
+    async getMyOrganizations(): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getMyOrganizations());
+    }
+
+    /** Creates a new site in an organization. Requires admin/owner role. */
+    async createSite(organizationId: string, details: CreateSiteRequestBody): Promise<any> {
+        return request<any>(this.#apiKey, 'POST', this.routes.createSite(organizationId), details);
+    }
+
+    /** Returns all members of an organization with user details. */
+    async getOrganizationMembers(organizationId: string): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getOrganizationMembers(organizationId));
+    }
+
+    /** Adds a user to an organization with a specified roles. */
+    async addOrganizationMember(organizationId: string, member: AddOrganizationMemberRequestBody): Promise<any> {
+        return request<any>(this.#apiKey, 'POST', this.routes.addOrganizationMember(organizationId), member);
+    }
+
     // OVERVIEW
+
+    /** Returns high-level analytics metrics for a site. */
+    async getOverview(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getOverview>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getOverview(this.siteId, ...params));
+    }
+
+    /** Returns time-series analytics data broken down by time buckets */
+    async getOverviewTimeSeries(
+        ...params: SkipFirstArrayItem<Parameters<typeof this.routes.getOverviewTimeSeries>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getOverviewTimeSeries(this.siteId, ...params));
+    }
+
+    /** Returns dimensional analytics broken down by a specific parameter. */
+    async getMetric(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getMetric>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getMetric(this.siteId, ...params));
+    }
+
+    /** Returns the count of active sessions within the specified time window. */
+    async getLiveVisitors(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getLiveVisitors>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getLiveVisitors(this.siteId, ...params));
+    }
 
     // EVENTS
 
+    /** Returns a paginated list of events with cursor-based pagination. */
+    async getEvents(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getEvents>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getEvents(this.siteId, ...params));
+    }
+
+    /** Returns list of unique custom event names with counts. */
+    async getEventNames(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getEventNames>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getEventNames(this.siteId, ...params));
+    }
+
+    /** Returns property key-value pairs for a specific event. */
+    async getEventProperties(
+        ...params: SkipFirstArrayItem<Parameters<typeof this.routes.getEventProperties>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getEventProperties(this.siteId, ...params));
+    }
+
+    /** Returns outbound link clicks with occurrence counts. */
+    async getOutboundLinks(
+        ...params: SkipFirstArrayItem<Parameters<typeof this.routes.getOutboundLinks>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getOutboundLinks(this.siteId, ...params));
+    }
+
     // ERRORS
 
+    /** Returns unique error messages with occurrence and session counts. */
+    async getErrorNames(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getErrorNames>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getErrorNames(this.siteId, ...params));
+    }
+
+    /** Returns individual error occurrences with context and stack traces. */
+    async getErrorEvents(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getErrorEvents>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getErrorEvents(this.siteId, ...params));
+    }
+
+    /** Returns error occurrence counts over time. */
+    async getErrorTimeSeries(
+        ...params: SkipFirstArrayItem<Parameters<typeof this.routes.getErrorTimeSeries>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getErrorTimeSeries(this.siteId, ...params));
+    }
+
     // GOALS
+
+    /** Returns paginated list of goals with conversion metrics. */
+    async getGoals(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getGoals>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getGoals(this.siteId, ...params));
+    }
+
+    /** Returns sessions that completed a specific goal. */
+    async getGoalSessions(...params: SkipFirstArrayItem<Parameters<typeof this.routes.getGoalSessions>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getGoalSessions(this.siteId, ...params));
+    }
 
     // FUNNELS
 
