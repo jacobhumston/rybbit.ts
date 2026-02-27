@@ -77,6 +77,5 @@ jobs:
                   body: ${{ steps.release-notes.outputs.notes }}
 
             - name: Trigger docs workflow
-              run: gh workflow run deploy-docs.yml
-              env:
-                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              uses: ./github/workflows/deploy-docs.yml
+
