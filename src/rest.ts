@@ -166,11 +166,77 @@ export class Rest {
 
     // FUNNELS
 
+    /** Returns all saved funnels for a site. */
+    async getFunnels(): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getFunnels(this.siteId));
+    }
+
     // PERFORMANCE
+
+    /** Returns aggregate Core Web Vitals metrics. */
+    async getPerformanceOverview(
+        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceOverview']>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceOverview(this.siteId, ...params));
+    }
+
+    /** Returns performance metrics over time. */
+    async getPerformanceTimeSeries(
+        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceTimeSeries']>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceTimeSeries(this.siteId, ...params));
+    }
+
+    /** Returns performance breakdown by dimension. */
+    async getPerformanceByDimension(
+        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceByDimension']>>
+    ): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceByDimension(this.siteId, ...params));
+    }
 
     // SESSIONS
 
+    /** Returns a paginated list of sessions. */
+    async getSessions(...params: SkipFirstArrayItem<Parameters<Routes['getSessions']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getSessions(this.siteId, ...params));
+    }
+
+    /** Returns detailed session information with events. */
+    async getSession(...params: SkipFirstArrayItem<Parameters<Routes['getSession']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getSession(this.siteId, ...params));
+    }
+
+    /** Returns aggregated session locations for map visualization. */
+    async getSessionLocations(...params: SkipFirstArrayItem<Parameters<Routes['getSessionLocations']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getSessionLocations(this.siteId, ...params));
+    }
+
     // USERS
 
+    /** Returns a paginated list of users. */
+    async getUsers(...params: SkipFirstArrayItem<Parameters<Routes['getUsers']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getUsers(this.siteId, ...params));
+    }
+
+    /** Returns daily session counts for a specific user. */
+    async getUserSessionCount(...params: SkipFirstArrayItem<Parameters<Routes['getUserSessionCount']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getUserSessionCount(this.siteId, ...params));
+    }
+
+    /** Returns detailed user profile information. */
+    async getUserInfo(...params: SkipFirstArrayItem<Parameters<Routes['getUserInfo']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getUserInfo(this.siteId, ...params));
+    }
+
     // MISC
+
+    /** Returns cohort-based retention analysis. */
+    async getRetention(...params: SkipFirstArrayItem<Parameters<Routes['getRetention']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getRetention(this.siteId, ...params));
+    }
+
+    /** Returns most common page navigation paths. */
+    async getJourneys(...params: SkipFirstArrayItem<Parameters<Routes['getJourneys']>>): Promise<any> {
+        return request<any>(this.#apiKey, 'GET', this.routes.getJourneys(this.siteId, ...params));
+    }
 }

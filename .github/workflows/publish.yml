@@ -78,4 +78,3 @@ jobs:
 
             - name: Trigger docs workflow
               uses: ./github/workflows/deploy-docs.yml
-
