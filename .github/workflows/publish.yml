@@ -22,15 +22,18 @@ jobs:
               with:
                   node-version: '20'
                   registry-url: 'https://registry.npmjs.org'
+            
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2
 
             - name: Update NPM
-              run: npm install -g npm@latest
+              run: bun install -g npm@latest
 
             - name: Install dependencies
-              run: npm install
+              run: bun install
 
             - name: Build package
-              run: npm exec tsc
+              run: bun run compile
 
             - name: Publish to npm
               id: npm-publish
@@ -72,3 +75,8 @@ jobs:
                   tag_name: ${{ steps.package-version.outputs.tag }}
                   name: Release ${{ steps.package-version.outputs.tag }}
                   body: ${{ steps.release-notes.outputs.notes }}
+
+            - name: Trigger docs workflow
+              run: gh workflow run deploy-docs.yml
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
