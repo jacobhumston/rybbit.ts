@@ -109,34 +109,38 @@ export class Routes {
     /** `GET` Returns high-level analytics metrics for a site. */
     getOverview(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/overview`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
     /** `GET` Returns time-series analytics data broken down by time buckets. */
     getOverviewTimeSeries(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        bucket?: Bucket
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            bucket?: Bucket;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/overview-bucketed`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            bucket: bucket
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            bucket: options.bucket
         });
     }
 
@@ -144,21 +148,23 @@ export class Routes {
     getMetric(
         siteId: SiteId,
         parameter: Parameter,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        limit?: number,
-        page?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            limit?: number;
+            page?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/metric`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
             parameter: parameter,
-            limit: limit?.toString(),
-            page: page?.toString()
+            limit: options.limit?.toString(),
+            page: options.page?.toString()
         });
     }
 
@@ -174,38 +180,42 @@ export class Routes {
     /** `GET` Returns a paginated list of events with cursor-based pagination. */
     getEvents(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        pageSize?: number,
-        sinceTimestamp?: Timestamp,
-        beforeTimestamp?: Timestamp
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            pageSize?: number;
+            sinceTimestamp?: Timestamp;
+            beforeTimestamp?: Timestamp;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/events`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page_size: pageSize?.toString(),
-            since_timestamp: sinceTimestamp,
-            before_timestamp: beforeTimestamp
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page_size: options.pageSize?.toString(),
+            since_timestamp: options.sinceTimestamp,
+            before_timestamp: options.beforeTimestamp
         });
     }
 
     /** `GET` Returns list of unique custom event names with counts. */
     getEventNames(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/events/names`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
@@ -213,16 +223,18 @@ export class Routes {
     getEventProperties(
         siteId: SiteId,
         eventName: string,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/events/properties`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
             event_name: eventName
         });
     }
@@ -230,16 +242,18 @@ export class Routes {
     /** `GET` Returns outbound link clicks with occurrence counts. */
     getOutboundLinks(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/events/outbound`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
@@ -248,20 +262,22 @@ export class Routes {
     /** `GET` Returns unique error messages with occurrence and session counts. */
     getErrorNames(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/error-names`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            limit: limit?.toString()
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            limit: options.limit?.toString()
         });
     }
 
@@ -269,20 +285,22 @@ export class Routes {
     getErrorEvents(
         siteId: SiteId,
         errorMessage: string,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/error-events`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            limit: limit?.toString(),
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            limit: options.limit?.toString(),
             errorMessage: errorMessage
         });
     }
@@ -291,18 +309,20 @@ export class Routes {
     getErrorTimeSeries(
         siteId: SiteId,
         errorMessage: string,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        bucket?: Bucket
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            bucket?: Bucket;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/error-bucketed`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            bucket: bucket,
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            bucket: options.bucket,
             errorMessage: errorMessage
         });
     }
@@ -312,24 +332,26 @@ export class Routes {
     /** `GET` Returns paginated list of goals with conversion metrics. */
     getGoals(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        pageSize?: number,
-        sortBy?: SortBy,
-        order?: Order
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            pageSize?: number;
+            sortBy?: SortBy;
+            order?: Order;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/goals`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            page_size: pageSize?.toString(),
-            sort: sortBy,
-            order: order
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            page_size: options.pageSize?.toString(),
+            sort: options.sortBy,
+            order: options.order
         });
     }
 
@@ -337,20 +359,22 @@ export class Routes {
     getGoalSessions(
         siteId: SiteId,
         goalId: number,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/goals/${goalId}/sessions`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            limit: limit?.toString()
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            limit: options.limit?.toString()
         });
     }
 
@@ -379,16 +403,18 @@ export class Routes {
     /** `GET` Analyzes funnel conversion data step-by-step. */
     analyzeFunnel(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/funnels/analyze`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
@@ -397,21 +423,23 @@ export class Routes {
         siteId: SiteId,
         stepNumber: number,
         mode: Mode,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/funnels/${stepNumber}/sessions`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
             mode: mode,
-            page: page?.toString(),
-            limit: limit?.toString()
+            page: options.page?.toString(),
+            limit: options.limit?.toString()
         });
     }
 
@@ -430,34 +458,38 @@ export class Routes {
     /** `GET` Returns aggregate Core Web Vitals metrics. */
     getPerformanceOverview(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/performance/overview`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
     /** `GET` Returns performance metrics over time. */
     getPerformanceTimeSeries(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        bucket?: Bucket
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            bucket?: Bucket;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/performance/time-series`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            bucket: bucket
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            bucket: options.bucket
         });
     }
 
@@ -465,25 +497,27 @@ export class Routes {
     getPerformanceByDimension(
         siteId: SiteId,
         dimension: Dimension,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number,
-        sortBy?: SortBy,
-        sortOrder?: Order
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+            sortBy?: SortBy;
+            sortOrder?: Order;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/performance/by-dimension`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
             dimension: dimension,
-            page: page?.toString(),
-            limit: limit?.toString(),
-            sort_by: sortBy,
-            sort_order: sortOrder
+            page: options.page?.toString(),
+            limit: options.limit?.toString(),
+            sort_by: options.sortBy,
+            sort_order: options.sortOrder
         });
     }
 
@@ -492,48 +526,59 @@ export class Routes {
     /** `GET` Returns a paginated list of sessions. */
     getSessions(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        limit?: number,
-        userId?: string,
-        identifiedOnly?: boolean
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            limit?: number;
+            userId?: string;
+            identifiedOnly?: boolean;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/sessions`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            limit: limit?.toString(),
-            user_id: userId,
-            identified_only: identifiedOnly?.toString()
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            limit: options.limit?.toString(),
+            user_id: options.userId,
+            identified_only: options.identifiedOnly?.toString()
         });
     }
 
     /** `GET` Returns detailed session information with events. */
-    getSession(siteId: SiteId, sessionId: string, limit?: number, offset?: number): URL {
+    getSession(
+        siteId: SiteId,
+        sessionId: string,
+        options: {
+            limit?: number;
+            offset?: number;
+        } = {}
+    ): URL {
         return this.#create(`/api/sites/${siteId}/sessions/${sessionId}`, {
-            limit: limit?.toString(),
-            offset: offset?.toString()
+            limit: options.limit?.toString(),
+            offset: options.offset?.toString()
         });
     }
 
     /** `GET` Returns aggregated session locations for map visualization. */
     getSessionLocations(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/session-locations`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined
         });
     }
 
@@ -542,34 +587,36 @@ export class Routes {
     /** `GET` Returns a paginated list of users. */
     getUsers(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        page?: number,
-        pageSize?: number,
-        sortBy?: SortBy,
-        sortOrder?: Order,
-        identifiedOnly?: boolean
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            page?: number;
+            pageSize?: number;
+            sortBy?: SortBy;
+            sortOrder?: Order;
+            identifiedOnly?: boolean;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/users`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            page: page?.toString(),
-            page_size: pageSize?.toString(),
-            sort_by: sortBy,
-            sort_order: sortOrder,
-            identified_only: identifiedOnly?.toString()
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            page: options.page?.toString(),
+            page_size: options.pageSize?.toString(),
+            sort_by: options.sortBy,
+            sort_order: options.sortOrder,
+            identified_only: options.identifiedOnly?.toString()
         });
     }
 
     /** `GET` Returns daily session counts for a specific user. */
-    getUserSessionCount(siteId: SiteId, userId: string, timezone?: TimeZone): URL {
+    getUserSessionCount(siteId: SiteId, userId: string, options: { timezone?: TimeZone } = {}): URL {
         return this.#create(`/api/sites/${siteId}/users/session-count`, {
             user_id: userId,
-            timezone: timezone
+            timezone: options.timezone
         });
     }
 
@@ -581,30 +628,32 @@ export class Routes {
     // MISC
 
     /** `GET` Returns cohort-based retention analysis. */
-    getRetention(siteId: SiteId, mode?: Mode, range?: number): URL {
+    getRetention(siteId: SiteId, options: { mode?: Mode; range?: number } = {}): URL {
         return this.#create(`/api/sites/${siteId}/retention`, {
-            mode: mode,
-            range: range?.toString()
+            mode: options.mode,
+            range: options.range?.toString()
         });
     }
 
     /** `GET` Returns most common page navigation paths. */
     getJourneys(
         siteId: SiteId,
-        startDate?: DateString,
-        endDate?: DateString,
-        timezone?: TimeZone,
-        filters?: Array<Filter>,
-        steps?: number,
-        limit?: number
+        options: {
+            startDate?: DateString;
+            endDate?: DateString;
+            timezone?: TimeZone;
+            filters?: Array<Filter>;
+            steps?: number;
+            limit?: number;
+        } = {}
     ): URL {
         return this.#create(`/api/sites/${siteId}/journeys`, {
-            start_date: startDate,
-            end_date: endDate,
-            time_zone: timezone,
-            filters: filters !== undefined ? JSON.stringify(filters) : undefined,
-            steps: steps?.toString(),
-            limit: limit?.toString()
+            start_date: options.startDate,
+            end_date: options.endDate,
+            time_zone: options.timezone,
+            filters: options.filters !== undefined ? JSON.stringify(options.filters) : undefined,
+            steps: options.steps?.toString(),
+            limit: options.limit?.toString()
         });
     }
 
