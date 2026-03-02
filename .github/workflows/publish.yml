@@ -76,5 +76,8 @@ jobs:
                   name: Release ${{ steps.package-version.outputs.tag }}
                   body: ${{ steps.release-notes.outputs.notes }}
 
-            - name: Trigger docs workflow
-              uses: ./github/workflows/deploy-docs.yml
+    deploy-docs:
+        needs: publish
+        uses: ./.github/workflows/deploy-docs.yml
+        permissions:
+            contents: write
