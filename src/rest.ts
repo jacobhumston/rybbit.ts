@@ -18,8 +18,13 @@ import type {
     UpdateSiteConfigRequestBody
 } from './types.js';
 
+/** Ensure `Rest` implements every method in `Routes`. */
+type RouteMethods = {
+    [K in keyof Routes]: any;
+};
+
 /** Rest methods to invoke the API. */
-export class Rest {
+export class Rest implements RouteMethods {
     /** Routes of this Rest instance. */
     routes: Routes;
 
@@ -44,7 +49,7 @@ export class Rest {
      * @throws {Error} Error response.
      */
     async request<T>(method: Parameters<typeof request>[1], url: URL, body?: any): Promise<T> {
-        return request<T>(this.#apiKey, method, body);
+        return request<T>(this.#apiKey, method, url, body);
     }
 
     // SITES
@@ -296,5 +301,10 @@ export class Rest {
     /** Returns most common page navigation paths. */
     async getJourneys(options: Parameters<Routes['getJourneys']>[1]): Promise<any> {
         return this.request<any>('GET', this.routes.getJourneys(this.siteId, options));
+    }
+
+    /** Track events, etc. */
+    async track(props: any): Promise<any> {
+        return this.request<any>('POST', this.routes.track(), props);
     }
 }
