@@ -3,9 +3,10 @@ import { request } from './requests.js';
 import type {
     AddOrganizationMemberRequestBody,
     CreateSiteRequestBody,
+    Dimension,
     GetSiteResponse,
+    Parameter,
     SiteId,
-    SkipFirstArrayItem,
     SuccessResponse,
     UpdatePrivateLinkRequestBody,
     UpdateSiteConfigRequestBody
@@ -28,41 +29,53 @@ export class Rest {
         this.#apiKey = apiKey;
     }
 
+    /**
+     * Send a request for this rest instance.
+     * @param method The request method.
+     * @param url The URL of this request.
+     * @param body The optional body to provide.
+     * @returns The response data.
+     * @throws {Error} Error response.
+     */
+    async request<T>(method: Parameters<typeof request>[1], url: URL, body?: any): Promise<T> {
+        return request<T>(this.#apiKey, method, body);
+    }
+
     // SITES
 
     /** Returns details for a specific site. */
     async getSite(): Promise<GetSiteResponse> {
-        return request<GetSiteResponse>(this.#apiKey, 'GET', this.routes.getSite(this.siteId));
+        return this.request<GetSiteResponse>('GET', this.routes.getSite(this.siteId));
     }
 
     /** Permanently deletes a site and all its data. Requires admin/owner role. */
     async deleteSite(): Promise<SuccessResponse> {
-        return request<SuccessResponse>(this.#apiKey, 'DELETE', this.routes.deleteSite(this.siteId));
+        return this.request<SuccessResponse>('DELETE', this.routes.deleteSite(this.siteId));
     }
 
     /** Updates site configuration settings. Requires admin/owner role. */
     async updateSiteConfig(config: UpdateSiteConfigRequestBody): Promise<any> {
-        return request<any>(this.#apiKey, 'PUT', this.routes.updateSiteConfig(this.siteId), config);
+        return this.request<any>('PUT', this.routes.updateSiteConfig(this.siteId), config);
     }
 
     /** Returns the list of excluded IP addresses. */
     async getExcludedIPs(): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getExcludedIPs(this.siteId));
+        return this.request<any>('GET', this.routes.getExcludedIPs(this.siteId));
     }
 
     /** Returns the list of excluded country codes. */
     async getExcludedCountries(): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getExcludedCountries(this.siteId));
+        return this.request<any>('GET', this.routes.getExcludedCountries(this.siteId));
     }
 
     /** Returns the private link key configuration. */
     async getPrivateLinkConfig(): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getPrivateLinkConfig(this.siteId));
+        return this.request<any>('GET', this.routes.getPrivateLinkConfig(this.siteId));
     }
 
     /** Generates or revokes a private link key. Requires admin/owner role. */
     async updatePrivateLinkConfig(action: UpdatePrivateLinkRequestBody['action']): Promise<any> {
-        return request<any>(this.#apiKey, 'POST', this.routes.updatePrivateLinkConfig(this.siteId), {
+        return this.request<any>('POST', this.routes.updatePrivateLinkConfig(this.siteId), {
             action
         } satisfies UpdatePrivateLinkRequestBody);
     }
@@ -71,172 +84,167 @@ export class Rest {
 
     /** Returns all organizations the authenticated user is a member of, including all members for each organization. */
     async getMyOrganizations(): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getMyOrganizations());
+        return this.request<any>('GET', this.routes.getMyOrganizations());
     }
 
     /** Creates a new site in an organization. Requires admin/owner role. */
     async createSite(organizationId: string, details: CreateSiteRequestBody): Promise<any> {
-        return request<any>(this.#apiKey, 'POST', this.routes.createSite(organizationId), details);
+        return this.request<any>('POST', this.routes.createSite(organizationId), details);
     }
 
     /** Returns all members of an organization with user details. */
     async getOrganizationMembers(organizationId: string): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getOrganizationMembers(organizationId));
+        return this.request<any>('GET', this.routes.getOrganizationMembers(organizationId));
     }
 
     /** Adds a user to an organization with a specified roles. */
     async addOrganizationMember(organizationId: string, member: AddOrganizationMemberRequestBody): Promise<any> {
-        return request<any>(this.#apiKey, 'POST', this.routes.addOrganizationMember(organizationId), member);
+        return this.request<any>('POST', this.routes.addOrganizationMember(organizationId), member);
     }
 
     // OVERVIEW
 
     /** Returns high-level analytics metrics for a site. */
-    async getOverview(...params: SkipFirstArrayItem<Parameters<Routes['getOverview']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getOverview(this.siteId, ...params));
+    async getOverview(options: Parameters<Routes['getOverview']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getOverview(this.siteId, options));
     }
 
     /** Returns time-series analytics data broken down by time buckets */
-    async getOverviewTimeSeries(
-        ...params: SkipFirstArrayItem<Parameters<Routes['getOverviewTimeSeries']>>
-    ): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getOverviewTimeSeries(this.siteId, ...params));
+    async getOverviewTimeSeries(options: Parameters<Routes['getOverviewTimeSeries']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getOverviewTimeSeries(this.siteId, options));
     }
 
     /** Returns dimensional analytics broken down by a specific parameter. */
-    async getMetric(...params: SkipFirstArrayItem<Parameters<Routes['getMetric']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getMetric(this.siteId, ...params));
+    async getMetric(parameter: Parameter, options: Parameters<Routes['getMetric']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getMetric(this.siteId, parameter, options));
     }
 
     /** Returns the count of active sessions within the specified time window. */
-    async getLiveVisitors(...params: SkipFirstArrayItem<Parameters<Routes['getLiveVisitors']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getLiveVisitors(this.siteId, ...params));
+    async getLiveVisitors(minutes?: number): Promise<any> {
+        return this.request<any>('GET', this.routes.getLiveVisitors(this.siteId, minutes));
     }
 
     // EVENTS
 
     /** Returns a paginated list of events with cursor-based pagination. */
-    async getEvents(...params: SkipFirstArrayItem<Parameters<Routes['getEvents']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getEvents(this.siteId, ...params));
+    async getEvents(options: Parameters<Routes['getEvents']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getEvents(this.siteId, options));
     }
 
     /** Returns list of unique custom event names with counts. */
-    async getEventNames(...params: SkipFirstArrayItem<Parameters<Routes['getEventNames']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getEventNames(this.siteId, ...params));
+    async getEventNames(options: Parameters<Routes['getEventNames']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getEventNames(this.siteId, options));
     }
 
     /** Returns property key-value pairs for a specific event. */
-    async getEventProperties(...params: SkipFirstArrayItem<Parameters<Routes['getEventProperties']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getEventProperties(this.siteId, ...params));
+    async getEventProperties(eventName: string, options: Parameters<Routes['getEventProperties']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getEventProperties(this.siteId, eventName, options));
     }
 
     /** Returns outbound link clicks with occurrence counts. */
-    async getOutboundLinks(...params: SkipFirstArrayItem<Parameters<Routes['getOutboundLinks']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getOutboundLinks(this.siteId, ...params));
+    async getOutboundLinks(options: Parameters<Routes['getOutboundLinks']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getOutboundLinks(this.siteId, options));
     }
 
     // ERRORS
 
     /** Returns unique error messages with occurrence and session counts. */
-    async getErrorNames(...params: SkipFirstArrayItem<Parameters<Routes['getErrorNames']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getErrorNames(this.siteId, ...params));
+    async getErrorNames(options: Parameters<Routes['getErrorNames']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getErrorNames(this.siteId, options));
     }
 
     /** Returns individual error occurrences with context and stack traces. */
-    async getErrorEvents(...params: SkipFirstArrayItem<Parameters<Routes['getErrorEvents']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getErrorEvents(this.siteId, ...params));
+    async getErrorEvents(errorMessage: string, options: Parameters<Routes['getErrorEvents']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getErrorEvents(this.siteId, errorMessage, options));
     }
 
     /** Returns error occurrence counts over time. */
-    async getErrorTimeSeries(...params: SkipFirstArrayItem<Parameters<Routes['getErrorTimeSeries']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getErrorTimeSeries(this.siteId, ...params));
+    async getErrorTimeSeries(errorMessage: string, options: Parameters<Routes['getErrorTimeSeries']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getErrorTimeSeries(this.siteId, errorMessage, options));
     }
 
     // GOALS
 
     /** Returns paginated list of goals with conversion metrics. */
-    async getGoals(...params: SkipFirstArrayItem<Parameters<Routes['getGoals']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getGoals(this.siteId, ...params));
+    async getGoals(options: Parameters<Routes['getGoals']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getGoals(this.siteId, options));
     }
 
     /** Returns sessions that completed a specific goal. */
-    async getGoalSessions(...params: SkipFirstArrayItem<Parameters<Routes['getGoalSessions']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getGoalSessions(this.siteId, ...params));
+    async getGoalSessions(goalId: number, options: Parameters<Routes['getGoalSessions']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getGoalSessions(this.siteId, goalId, options));
     }
 
     // FUNNELS
 
     /** Returns all saved funnels for a site. */
     async getFunnels(): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getFunnels(this.siteId));
+        return this.request<any>('GET', this.routes.getFunnels(this.siteId));
     }
 
     // PERFORMANCE
 
     /** Returns aggregate Core Web Vitals metrics. */
-    async getPerformanceOverview(
-        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceOverview']>>
-    ): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceOverview(this.siteId, ...params));
+    async getPerformanceOverview(options: Parameters<Routes['getPerformanceOverview']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getPerformanceOverview(this.siteId, options));
     }
 
     /** Returns performance metrics over time. */
-    async getPerformanceTimeSeries(
-        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceTimeSeries']>>
-    ): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceTimeSeries(this.siteId, ...params));
+    async getPerformanceTimeSeries(options: Parameters<Routes['getPerformanceTimeSeries']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getPerformanceTimeSeries(this.siteId, options));
     }
 
     /** Returns performance breakdown by dimension. */
     async getPerformanceByDimension(
-        ...params: SkipFirstArrayItem<Parameters<Routes['getPerformanceByDimension']>>
+        dimension: Dimension,
+        options: Parameters<Routes['getPerformanceByDimension']>[2]
     ): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getPerformanceByDimension(this.siteId, ...params));
+        return this.request<any>('GET', this.routes.getPerformanceByDimension(this.siteId, dimension, options));
     }
 
     // SESSIONS
 
     /** Returns a paginated list of sessions. */
-    async getSessions(...params: SkipFirstArrayItem<Parameters<Routes['getSessions']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getSessions(this.siteId, ...params));
+    async getSessions(options: Parameters<Routes['getSessions']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getSessions(this.siteId, options));
     }
 
     /** Returns detailed session information with events. */
-    async getSession(...params: SkipFirstArrayItem<Parameters<Routes['getSession']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getSession(this.siteId, ...params));
+    async getSession(sessionId: string, options: Parameters<Routes['getSession']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getSession(this.siteId, sessionId, options));
     }
 
     /** Returns aggregated session locations for map visualization. */
-    async getSessionLocations(...params: SkipFirstArrayItem<Parameters<Routes['getSessionLocations']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getSessionLocations(this.siteId, ...params));
+    async getSessionLocations(options: Parameters<Routes['getSessionLocations']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getSessionLocations(this.siteId, options));
     }
 
     // USERS
 
     /** Returns a paginated list of users. */
-    async getUsers(...params: SkipFirstArrayItem<Parameters<Routes['getUsers']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getUsers(this.siteId, ...params));
+    async getUsers(options: Parameters<Routes['getUsers']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getUsers(this.siteId, options));
     }
 
     /** Returns daily session counts for a specific user. */
-    async getUserSessionCount(...params: SkipFirstArrayItem<Parameters<Routes['getUserSessionCount']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getUserSessionCount(this.siteId, ...params));
+    async getUserSessionCount(userId: string, options: Parameters<Routes['getUserSessionCount']>[2]): Promise<any> {
+        return this.request<any>('GET', this.routes.getUserSessionCount(this.siteId, userId, options));
     }
 
     /** Returns detailed user profile information. */
-    async getUserInfo(...params: SkipFirstArrayItem<Parameters<Routes['getUserInfo']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getUserInfo(this.siteId, ...params));
+    async getUserInfo(userId: string): Promise<any> {
+        return this.request<any>('GET', this.routes.getUserInfo(this.siteId, userId));
     }
 
     // MISC
 
     /** Returns cohort-based retention analysis. */
-    async getRetention(...params: SkipFirstArrayItem<Parameters<Routes['getRetention']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getRetention(this.siteId, ...params));
+    async getRetention(options: Parameters<Routes['getRetention']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getRetention(this.siteId, options));
     }
 
     /** Returns most common page navigation paths. */
-    async getJourneys(...params: SkipFirstArrayItem<Parameters<Routes['getJourneys']>>): Promise<any> {
-        return request<any>(this.#apiKey, 'GET', this.routes.getJourneys(this.siteId, ...params));
+    async getJourneys(options: Parameters<Routes['getJourneys']>[1]): Promise<any> {
+        return this.request<any>('GET', this.routes.getJourneys(this.siteId, options));
     }
 }

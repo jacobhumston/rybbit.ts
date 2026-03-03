@@ -1,6 +1,3 @@
-/** Utility type to skip the first item of an array. */
-export type SkipFirstArrayItem<T extends any[]> = T extends [any, ...infer Rest] ? Rest : never;
-
 /**
  * A date with the format of `year-month-day`.
  * Example: `2019-02-24`

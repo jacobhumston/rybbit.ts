@@ -14,6 +14,7 @@ export interface ErrorResponse {
 
 /**
  * Send a request.
+ * @param apiKey The API key for this request.
  * @param method The request method.
  * @param url The URL of this request.
  * @param body The optional body to provide.

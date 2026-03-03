@@ -17,8 +17,7 @@ export type {
     UpdateSiteConfigRequestBody,
     AddOrganizationMemberRequestBody,
     CreateSiteRequestBody,
-    SuccessResponse,
-    SkipFirstArrayItem
+    SuccessResponse
 } from './types.js';
 
 export { toDateString, handleRejection } from './utility.js';
