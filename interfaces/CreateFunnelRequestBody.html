@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <title>ErrorResponse | rybbit.ts</title>
+        <title>CreateFunnelRequestBody | rybbit.ts</title>
         <meta name="description" content="Documentation for rybbit.ts" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/style.css" />
@@ -57,30 +57,56 @@
             <div class="col-content">
                 <div class="tsd-page-title">
                     <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-                        <li><a href="" aria-current="page">ErrorResponse</a></li>
+                        <li><a href="" aria-current="page">CreateFunnelRequestBody</a></li>
                     </ul>
-                    <h1>Interface ErrorResponse</h1>
+                    <h1>Interface CreateFunnelRequestBody</h1>
                 </div>
                 <section class="tsd-panel tsd-comment">
-                    <div class="tsd-comment tsd-typography"><p>An error response.</p></div>
+                    <div class="tsd-comment tsd-typography">
+                        <p>Request body for <code>createFunnel</code>.</p>
+                    </div>
                 </section>
                 <div class="tsd-signature">
                     <span class="tsd-signature-keyword">interface</span>
-                    <span class="tsd-kind-interface">ErrorResponse</span> <span class="tsd-signature-symbol">{</span
-                    ><br />    <a class="tsd-kind-property" href="#error">error</a
+                    <span class="tsd-kind-interface">CreateFunnelRequestBody</span>
+                    <span class="tsd-signature-symbol">{</span><br />    <a class="tsd-kind-property" href="#name"
+                        >name</a
                     ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#status"
-                        >status</a
-                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#steps"
+                        >steps</a
+                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{</span>
+                    <span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span>
+                    <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span>
+                    <span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">:</span>
+                    <span class="tsd-signature-type">&quot;event&quot;</span>
+                    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;page&quot;</span
+                    ><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">value</span
+                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span>
+                    <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span
                     ><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
                 </div>
+                <section class="tsd-panel tsd-hierarchy" data-refl="78">
+                    <h4>Hierarchy (<a href="../hierarchy.html#CreateFunnelRequestBody">View Summary</a>)</h4>
+                    <ul class="tsd-hierarchy">
+                        <li class="tsd-hierarchy-item">
+                            <a href="AnalyzeFunnelRequestBody.html" class="tsd-signature-type tsd-kind-interface"
+                                >AnalyzeFunnelRequestBody</a
+                            >
+                            <ul class="tsd-hierarchy">
+                                <li class="tsd-hierarchy-item">
+                                    <span class="tsd-hierarchy-target">CreateFunnelRequestBody</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
                 <aside class="tsd-sources">
                     <ul>
                         <li>
                             Defined in
                             <a
-                                href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/requests.ts#L2"
-                                >requests.ts:2</a
+                                href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/types.ts#L235"
+                                >types.ts:235</a
                             >
                         </li>
                     </ul>
@@ -98,15 +124,15 @@
                                 <section class="tsd-index-section">
                                     <h3 class="tsd-index-heading">Properties</h3>
                                     <div class="tsd-index-list">
-                                        <a href="#error" class="tsd-index-link"
+                                        <a href="#name" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>error</span></a
+                                            ><span>name</span></a
                                         >
-                                        <a href="#status" class="tsd-index-link"
+                                        <a href="#steps" class="tsd-index-link tsd-is-inherited"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>status</span></a
+                                            ><span>steps</span></a
                                         >
                                     </div>
                                 </section>
@@ -123,58 +149,66 @@
                     </summary>
                     <section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="error">
-                                <span>error</span
-                                ><a href="#error" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="name">
+                                <span>name</span
+                                ><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">error</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span>
                                 <span class="tsd-signature-type">string</span>
                             </div>
-                            <div class="tsd-comment tsd-typography"><p>Error message.</p></div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/requests.ts#L12"
-                                            >requests.ts:12</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/types.ts#L236"
+                                            >types.ts:236</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="status">
-                                <span>status</span
-                                ><a href="#status" aria-label="Permalink" class="tsd-anchor-icon"
+                        <section class="tsd-panel tsd-member tsd-is-inherited">
+                            <h3 class="tsd-anchor-link" id="steps">
+                                <span>steps</span
+                                ><a href="#steps" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">status</span><span class="tsd-signature-symbol">:</span>
-                                <span class="tsd-signature-type">number</span>
-                            </div>
-                            <div class="tsd-comment tsd-typography">
-                                <p>The status of this error.</p>
-                                <ul>
-                                    <li><code>-1</code> - Request failed to send, etc.</li>
-                                    <li><code>-2</code> - Failed to parse response. (Response wasn't valid JSON.)</li>
-                                    <li><code>-3</code> - Unknown response.</li>
-                                    <li><code>XXX</code> - Server response status code.</li>
-                                </ul>
+                                <span class="tsd-kind-property">steps</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">name</span
+                                ><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">string</span
+                                ><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">type</span
+                                ><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">&quot;event&quot;</span>
+                                <span class="tsd-signature-symbol">|</span>
+                                <span class="tsd-signature-type">&quot;page&quot;</span
+                                ><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">value</span
+                                ><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">string</span>
+                                <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">[]</span>
                             </div>
                             <aside class="tsd-sources">
+                                <p>
+                                    Inherited from
+                                    <a href="AnalyzeFunnelRequestBody.html">AnalyzeFunnelRequestBody</a>.<a
+                                        href="AnalyzeFunnelRequestBody.html#steps"
+                                        >steps</a
+                                    >
+                                </p>
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/requests.ts#L10"
-                                            >requests.ts:10</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/f0f7762f402c2fa5bfae29ebc098b47d1a925f31/src/types.ts#L224"
+                                            >types.ts:224</a
                                         >
                                     </li>
                                 </ul>
@@ -308,14 +342,14 @@
                                     >Properties
                                 </summary>
                                 <div>
-                                    <a href="#error"
+                                    <a href="#name"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>error</span></a
-                                    ><a href="#status"
+                                        ><span>name</span></a
+                                    ><a href="#steps" class="tsd-is-inherited"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>status</span></a
+                                        ><span>steps</span></a
                                     >
                                 </div>
                             </details>
