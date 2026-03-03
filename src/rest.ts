@@ -2,12 +2,18 @@ import { Routes } from './endpoints.js';
 import { request } from './requests.js';
 import type {
     AddOrganizationMemberRequestBody,
+    AnalyzeFunnelRequestBody,
+    CreateFunnelRequestBody,
+    CreateGoalRequestBody,
     CreateSiteRequestBody,
     Dimension,
+    GetFunnelStepSessionsRequestBody,
     GetSiteResponse,
+    Mode,
     Parameter,
     SiteId,
     SuccessResponse,
+    UpdateGoalRequestBody,
     UpdatePrivateLinkRequestBody,
     UpdateSiteConfigRequestBody
 } from './types.js';
@@ -175,11 +181,55 @@ export class Rest {
         return this.request<any>('GET', this.routes.getGoalSessions(this.siteId, goalId, options));
     }
 
+    /** Creates a new goal. */
+    async createGoal(goal: CreateGoalRequestBody): Promise<any> {
+        return this.request<any>('POST', this.routes.createGoal(this.siteId), goal);
+    }
+
+    /** Updates an existing goal. */
+    async updateGoal(goalId: number, goal: UpdateGoalRequestBody): Promise<any> {
+        return this.request<any>('PUT', this.routes.updateGoal(this.siteId, goalId), goal);
+    }
+
+    /** Deletes a goal. */
+    async deleteGoal(goalId: number): Promise<any> {
+        return this.request<any>('DELETE', this.routes.deleteGoal(this.siteId, goalId));
+    }
+
     // FUNNELS
 
     /** Returns all saved funnels for a site. */
     async getFunnels(): Promise<any> {
         return this.request<any>('GET', this.routes.getFunnels(this.siteId));
+    }
+
+    /** Analyzes funnel conversion data step-by-step. */
+    async analyzeFunnel(funnel: AnalyzeFunnelRequestBody, options: Parameters<Routes['analyzeFunnel']>[1]) {
+        return this.request<any>('POST', this.routes.analyzeFunnel(this.siteId, options), funnel);
+    }
+
+    /** Returns sessions that reached or dropped at a specific funnel step. */
+    async getFunnelStepSessions(
+        funnel: GetFunnelStepSessionsRequestBody,
+        stepNumber: number,
+        mode: Mode,
+        options: Parameters<Routes['getFunnelStepSessions']>[3]
+    ) {
+        return this.request<any>(
+            'POST',
+            this.routes.getFunnelStepSessions(this.siteId, stepNumber, mode, options),
+            funnel
+        );
+    }
+
+    /** Creates a saved funnel. */
+    async createFunnel(funnel: CreateFunnelRequestBody) {
+        return this.request<any>('POST', this.routes.createFunnel(this.siteId), funnel);
+    }
+
+    /** Deletes a saved funnel. */
+    async deleteFunnel(funnelId: number): Promise<any> {
+        return this.request<any>('DELETE', this.routes.deleteFunnel(this.siteId, funnelId));
     }
 
     // PERFORMANCE

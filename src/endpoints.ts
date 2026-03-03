@@ -1,15 +1,15 @@
 import type {
-    DateString,
-    TimeZone,
-    Filter,
     Bucket,
-    Parameter,
-    Timestamp,
-    SortBy,
-    Order,
-    Mode,
+    DateString,
     Dimension,
-    SiteId
+    Filter,
+    Mode,
+    Order,
+    Parameter,
+    SiteId,
+    SortBy,
+    Timestamp,
+    TimeZone
 } from './types.js';
 
 /** Route interfaces, used to construct URLs. */

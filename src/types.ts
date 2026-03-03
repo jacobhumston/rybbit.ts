@@ -205,3 +205,33 @@ export interface AddOrganizationMemberRequestBody {
     email: string;
     role: 'admin' | 'member' | 'owner';
 }
+
+/** Request body for `createGoal`. */
+export interface CreateGoalRequestBody {
+    name: string;
+    goalType: 'path' | 'event';
+    config: {
+        pathPattern?: string;
+        eventName?: string;
+    };
+}
+
+/** Request body for `updateGoal`. */
+export interface UpdateGoalRequestBody extends CreateGoalRequestBody {}
+
+/** Request body for `analyzeFunnel`. */
+export interface AnalyzeFunnelRequestBody {
+    steps: Array<{
+        type: 'page' | 'event';
+        value: string;
+        name: string;
+    }>;
+}
+
+/** Request body for `getFunnelStepSessions`. */
+export interface GetFunnelStepSessionsRequestBody extends AnalyzeFunnelRequestBody {}
+
+/** Request body for `createFunnel`. */
+export interface CreateFunnelRequestBody extends AnalyzeFunnelRequestBody {
+    name: string;
+}

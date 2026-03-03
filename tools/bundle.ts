@@ -1,5 +1,5 @@
-import { mkdirSync } from 'node:fs';
 import { execSync } from 'node:child_process';
+import { mkdirSync } from 'node:fs';
 
 mkdirSync('dist/bundle', { recursive: true });
 

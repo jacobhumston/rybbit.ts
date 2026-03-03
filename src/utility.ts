@@ -1,5 +1,5 @@
-import type { DateString } from './types.js';
 import type { ErrorResponse } from './requests.js';
+import type { DateString } from './types.js';
 
 /**
  * Converts a {@linkcode Date} to {@linkcode DateString}.
