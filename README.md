@@ -1,4 +1,4 @@
-# rybbit.ts
+![rybbit.ts](https://raw.githubusercontent.com/jacobhumston/rybbit.ts/refs/heads/main/.github/rybbit-ts-logo.png)
 
 A TypeScript wrapper for rybbit.com API.
 
