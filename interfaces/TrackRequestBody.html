@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <title>CreateSiteRequestBody | rybbit.ts</title>
+        <title>TrackRequestBody | rybbit.ts</title>
         <meta name="description" content="Documentation for rybbit.ts" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/style.css" />
@@ -57,99 +57,82 @@
             <div class="col-content">
                 <div class="tsd-page-title">
                     <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-                        <li><a href="" aria-current="page">CreateSiteRequestBody</a></li>
+                        <li><a href="" aria-current="page">TrackRequestBody</a></li>
                     </ul>
-                    <h1>Interface CreateSiteRequestBody</h1>
+                    <h1>Interface TrackRequestBody</h1>
                 </div>
                 <section class="tsd-panel tsd-comment">
                     <div class="tsd-comment tsd-typography">
-                        <p>Request body for <code>createSite</code>.</p>
+                        <p>Request body for <code>track</code>.</p>
                     </div>
                 </section>
                 <div class="tsd-signature">
                     <span class="tsd-signature-keyword">interface</span>
-                    <span class="tsd-kind-interface">CreateSiteRequestBody</span>
-                    <span class="tsd-signature-symbol">{</span><br />    <a class="tsd-kind-property" href="#blockbots"
-                        >blockBots</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#domain"
-                        >domain</a
-                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#excludedcountries"
-                        >excludedCountries</a
+                    <span class="tsd-kind-interface">TrackRequestBody</span> <span class="tsd-signature-symbol">{</span
+                    ><br />    <a class="tsd-kind-property" href="#event_name">event_name</a
                     ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#excludedips"
-                        >excludedIPs</a
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#hostname"
+                        >hostname</a
                     ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#name"
-                        >name</a
-                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#public"
-                        >public</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#saltuserids"
-                        >saltUserIds</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#sessionreplay"
-                        >sessionReplay</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#tags"
-                        >tags</a
+                        href="#ip_address"
+                        >ip_address</a
                     ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
-                    ><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#trackbuttonclicks"
-                        >trackButtonClicks</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#trackcopy"
-                        >trackCopy</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#language"
+                        >language</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#trackerrors"
-                        >trackErrors</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                        href="#page_title"
+                        >page_title</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#pathname"
+                        >pathname</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#trackforminteractions"
-                        >trackFormInteractions</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                        href="#properties"
+                        >properties</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span>
+                    <span class="tsd-signature-symbol">|</span>
+                    <a
+                        href="https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type"
+                        class="tsd-signature-type external"
+                        target="_blank"
+                        >Record</a
+                    ><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span
+                    ><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span
+                    ><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span
+                    ><br />    <a class="tsd-kind-property" href="#querystring">querystring</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#referrer"
+                        >referrer</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#trackinitialpageview"
-                        >trackInitialPageView</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#trackip"
-                        >trackIp</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                        href="#screenheight"
+                        >screenHeight</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#trackoutbound"
-                        >trackOutbound</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                        href="#screenwidth"
+                        >screenWidth</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#type"
+                        >type</a
+                    ><span class="tsd-signature-symbol">:</span>
+                    <span class="tsd-signature-type">&quot;pageview&quot;</span>
+                    <span class="tsd-signature-symbol">|</span>
+                    <span class="tsd-signature-type">&quot;custom_event&quot;</span
                     ><span class="tsd-signature-symbol">;</span><br />    <a
                         class="tsd-kind-property"
-                        href="#trackspanavigation"
-                        >trackSpaNavigation</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a
-                        class="tsd-kind-property"
-                        href="#trackurlparams"
-                        >trackUrlParams</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
-                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#webvitals"
-                        >webVitals</a
-                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+                        href="#user_agent"
+                        >user_agent</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#user_id"
+                        >user_id</a
+                    ><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
                     ><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
                 </div>
                 <aside class="tsd-sources">
@@ -157,8 +140,8 @@
                         <li>
                             Defined in
                             <a
-                                href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L191"
-                                >types.ts:191</a
+                                href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L250"
+                                >types.ts:250</a
                             >
                         </li>
                     </ul>
@@ -176,100 +159,75 @@
                                 <section class="tsd-index-section">
                                     <h3 class="tsd-index-heading">Properties</h3>
                                     <div class="tsd-index-list">
-                                        <a href="#blockbots" class="tsd-index-link"
+                                        <a href="#event_name" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>block<wbr />Bots?</span></a
+                                            ><span>event_<wbr />name?</span></a
                                         >
-                                        <a href="#domain" class="tsd-index-link"
+                                        <a href="#hostname" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>domain</span></a
+                                            ><span>hostname?</span></a
                                         >
-                                        <a href="#excludedcountries" class="tsd-index-link"
+                                        <a href="#ip_address" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>excluded<wbr />Countries?</span></a
+                                            ><span>ip_<wbr />address?</span></a
                                         >
-                                        <a href="#excludedips" class="tsd-index-link"
+                                        <a href="#language" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>excluded<wbr />I<wbr />Ps?</span></a
+                                            ><span>language?</span></a
                                         >
-                                        <a href="#name" class="tsd-index-link"
+                                        <a href="#page_title" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>name</span></a
+                                            ><span>page_<wbr />title?</span></a
                                         >
-                                        <a href="#public" class="tsd-index-link"
+                                        <a href="#pathname" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>public?</span></a
+                                            ><span>pathname?</span></a
                                         >
-                                        <a href="#saltuserids" class="tsd-index-link"
+                                        <a href="#properties" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>salt<wbr />User<wbr />Ids?</span></a
+                                            ><span>properties?</span></a
                                         >
-                                        <a href="#sessionreplay" class="tsd-index-link"
+                                        <a href="#querystring" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>session<wbr />Replay?</span></a
+                                            ><span>querystring?</span></a
                                         >
-                                        <a href="#tags" class="tsd-index-link"
+                                        <a href="#referrer" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>tags?</span></a
+                                            ><span>referrer?</span></a
                                         >
-                                        <a href="#trackbuttonclicks" class="tsd-index-link"
+                                        <a href="#screenheight" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Button<wbr />Clicks?</span></a
+                                            ><span>screen<wbr />Height?</span></a
                                         >
-                                        <a href="#trackcopy" class="tsd-index-link"
+                                        <a href="#screenwidth" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Copy?</span></a
+                                            ><span>screen<wbr />Width?</span></a
                                         >
-                                        <a href="#trackerrors" class="tsd-index-link"
+                                        <a href="#type" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Errors?</span></a
+                                            ><span>type</span></a
                                         >
-                                        <a href="#trackforminteractions" class="tsd-index-link"
+                                        <a href="#user_agent" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Form<wbr />Interactions?</span></a
+                                            ><span>user_<wbr />agent?</span></a
                                         >
-                                        <a href="#trackinitialpageview" class="tsd-index-link"
+                                        <a href="#user_id" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Initial<wbr />Page<wbr />View?</span></a
-                                        >
-                                        <a href="#trackip" class="tsd-index-link"
-                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                                <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Ip?</span></a
-                                        >
-                                        <a href="#trackoutbound" class="tsd-index-link"
-                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                                <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Outbound?</span></a
-                                        >
-                                        <a href="#trackspanavigation" class="tsd-index-link"
-                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                                <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Spa<wbr />Navigation?</span></a
-                                        >
-                                        <a href="#trackurlparams" class="tsd-index-link"
-                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                                <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>track<wbr />Url<wbr />Params?</span></a
-                                        >
-                                        <a href="#webvitals" class="tsd-index-link"
-                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                                <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>web<wbr />Vitals?</span></a
+                                            ><span>user_<wbr />id?</span></a
                                         >
                                     </div>
                                 </section>
@@ -286,40 +244,16 @@
                     </summary>
                     <section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="blockbots">
-                                <code class="tsd-tag">Optional</code><span>block<wbr />Bots</span
-                                ><a href="#blockbots" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="event_name">
+                                <code class="tsd-tag">Optional</code><span>event_<wbr />name</span
+                                ><a href="#event_name" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">blockBots</span
+                                <span class="tsd-kind-property">event_name</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
-                            </div>
-                            <aside class="tsd-sources">
-                                <ul>
-                                    <li>
-                                        Defined in
-                                        <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L195"
-                                            >types.ts:195</a
-                                        >
-                                    </li>
-                                </ul>
-                            </aside>
-                        </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="domain">
-                                <span>domain</span
-                                ><a href="#domain" aria-label="Permalink" class="tsd-anchor-icon"
-                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
-                                ></a>
-                            </h3>
-                            <div class="tsd-signature">
-                                <span class="tsd-kind-property">domain</span><span class="tsd-signature-symbol">:</span>
                                 <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
@@ -327,75 +261,24 @@
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L192"
-                                            >types.ts:192</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L263"
+                                            >types.ts:263</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="excludedcountries">
-                                <code class="tsd-tag">Optional</code><span>excluded<wbr />Countries</span
-                                ><a href="#excludedcountries" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="hostname">
+                                <code class="tsd-tag">Optional</code><span>hostname</span
+                                ><a href="#hostname" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">excludedCountries</span
+                                <span class="tsd-kind-property">hostname</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">string</span
-                                ><span class="tsd-signature-symbol">[]</span>
-                            </div>
-                            <aside class="tsd-sources">
-                                <ul>
-                                    <li>
-                                        Defined in
-                                        <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L198"
-                                            >types.ts:198</a
-                                        >
-                                    </li>
-                                </ul>
-                            </aside>
-                        </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="excludedips">
-                                <code class="tsd-tag">Optional</code><span>excluded<wbr />I<wbr />Ps</span
-                                ><a href="#excludedips" aria-label="Permalink" class="tsd-anchor-icon"
-                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
-                                ></a>
-                            </h3>
-                            <div class="tsd-signature">
-                                <span class="tsd-kind-property">excludedIPs</span
-                                ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">string</span
-                                ><span class="tsd-signature-symbol">[]</span>
-                            </div>
-                            <aside class="tsd-sources">
-                                <ul>
-                                    <li>
-                                        Defined in
-                                        <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L197"
-                                            >types.ts:197</a
-                                        >
-                                    </li>
-                                </ul>
-                            </aside>
-                        </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="name">
-                                <span>name</span
-                                ><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"
-                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
-                                ></a>
-                            </h3>
-                            <div class="tsd-signature">
-                                <span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span>
                                 <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
@@ -403,359 +286,319 @@
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L193"
-                                            >types.ts:193</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L251"
+                                            >types.ts:251</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="public">
-                                <code class="tsd-tag">Optional</code><span>public</span
-                                ><a href="#public" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="ip_address">
+                                <code class="tsd-tag">Optional</code><span>ip_<wbr />address</span
+                                ><a href="#ip_address" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">public</span
+                                <span class="tsd-kind-property">ip_address</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L194"
-                                            >types.ts:194</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L261"
+                                            >types.ts:261</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="saltuserids">
-                                <code class="tsd-tag">Optional</code><span>salt<wbr />User<wbr />Ids</span
-                                ><a href="#saltuserids" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="language">
+                                <code class="tsd-tag">Optional</code><span>language</span
+                                ><a href="#language" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">saltUserIds</span
+                                <span class="tsd-kind-property">language</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L196"
-                                            >types.ts:196</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L256"
+                                            >types.ts:256</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="sessionreplay">
-                                <code class="tsd-tag">Optional</code><span>session<wbr />Replay</span
-                                ><a href="#sessionreplay" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="page_title">
+                                <code class="tsd-tag">Optional</code><span>page_<wbr />title</span
+                                ><a href="#page_title" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">sessionReplay</span
+                                <span class="tsd-kind-property">page_title</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L199"
-                                            >types.ts:199</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L257"
+                                            >types.ts:257</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="tags">
-                                <code class="tsd-tag">Optional</code><span>tags</span
-                                ><a href="#tags" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="pathname">
+                                <code class="tsd-tag">Optional</code><span>pathname</span
+                                ><a href="#pathname" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">tags</span><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">string</span
-                                ><span class="tsd-signature-symbol">[]</span>
-                            </div>
-                            <aside class="tsd-sources">
-                                <ul>
-                                    <li>
-                                        Defined in
-                                        <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L210"
-                                            >types.ts:210</a
-                                        >
-                                    </li>
-                                </ul>
-                            </aside>
-                        </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackbuttonclicks">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Button<wbr />Clicks</span
-                                ><a href="#trackbuttonclicks" aria-label="Permalink" class="tsd-anchor-icon"
-                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
-                                ></a>
-                            </h3>
-                            <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackButtonClicks</span
+                                <span class="tsd-kind-property">pathname</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L207"
-                                            >types.ts:207</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L252"
+                                            >types.ts:252</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackcopy">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Copy</span
-                                ><a href="#trackcopy" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="properties">
+                                <code class="tsd-tag">Optional</code><span>properties</span
+                                ><a href="#properties" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackCopy</span
+                                <span class="tsd-kind-property">properties</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
+                                <span class="tsd-signature-symbol">|</span>
+                                <a
+                                    href="https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type"
+                                    class="tsd-signature-type external"
+                                    target="_blank"
+                                    >Record</a
+                                ><span class="tsd-signature-symbol">&lt;</span
+                                ><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">,</span>
+                                <span class="tsd-signature-type">any</span
+                                ><span class="tsd-signature-symbol">&gt;</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L208"
-                                            >types.ts:208</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L264"
+                                            >types.ts:264</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackerrors">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Errors</span
-                                ><a href="#trackerrors" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="querystring">
+                                <code class="tsd-tag">Optional</code><span>querystring</span
+                                ><a href="#querystring" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackErrors</span
+                                <span class="tsd-kind-property">querystring</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L201"
-                                            >types.ts:201</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L253"
+                                            >types.ts:253</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackforminteractions">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Form<wbr />Interactions</span
-                                ><a href="#trackforminteractions" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="referrer">
+                                <code class="tsd-tag">Optional</code><span>referrer</span
+                                ><a href="#referrer" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackFormInteractions</span
+                                <span class="tsd-kind-property">referrer</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L209"
-                                            >types.ts:209</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L258"
+                                            >types.ts:258</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackinitialpageview">
-                                <code class="tsd-tag">Optional</code
-                                ><span>track<wbr />Initial<wbr />Page<wbr />View</span
-                                ><a href="#trackinitialpageview" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="screenheight">
+                                <code class="tsd-tag">Optional</code><span>screen<wbr />Height</span
+                                ><a href="#screenheight" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackInitialPageView</span
+                                <span class="tsd-kind-property">screenHeight</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">number</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L204"
-                                            >types.ts:204</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L255"
+                                            >types.ts:255</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackip">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Ip</span
-                                ><a href="#trackip" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="screenwidth">
+                                <code class="tsd-tag">Optional</code><span>screen<wbr />Width</span
+                                ><a href="#screenwidth" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackIp</span
+                                <span class="tsd-kind-property">screenWidth</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">number</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L206"
-                                            >types.ts:206</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L254"
+                                            >types.ts:254</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackoutbound">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Outbound</span
-                                ><a href="#trackoutbound" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="type">
+                                <span>type</span
+                                ><a href="#type" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackOutbound</span
-                                ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">&quot;pageview&quot;</span>
+                                <span class="tsd-signature-symbol">|</span>
+                                <span class="tsd-signature-type">&quot;custom_event&quot;</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L202"
-                                            >types.ts:202</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L262"
+                                            >types.ts:262</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackspanavigation">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Spa<wbr />Navigation</span
-                                ><a href="#trackspanavigation" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="user_agent">
+                                <code class="tsd-tag">Optional</code><span>user_<wbr />agent</span
+                                ><a href="#user_agent" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackSpaNavigation</span
+                                <span class="tsd-kind-property">user_agent</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L205"
-                                            >types.ts:205</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L260"
+                                            >types.ts:260</a
                                         >
                                     </li>
                                 </ul>
                             </aside>
                         </section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="trackurlparams">
-                                <code class="tsd-tag">Optional</code><span>track<wbr />Url<wbr />Params</span
-                                ><a href="#trackurlparams" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="user_id">
+                                <code class="tsd-tag">Optional</code><span>user_<wbr />id</span
+                                ><a href="#user_id" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">trackUrlParams</span
+                                <span class="tsd-kind-property">user_id</span
                                 ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L203"
-                                            >types.ts:203</a
-                                        >
-                                    </li>
-                                </ul>
-                            </aside>
-                        </section>
-                        <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="webvitals">
-                                <code class="tsd-tag">Optional</code><span>web<wbr />Vitals</span
-                                ><a href="#webvitals" aria-label="Permalink" class="tsd-anchor-icon"
-                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
-                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
-                                ></a>
-                            </h3>
-                            <div class="tsd-signature">
-                                <span class="tsd-kind-property">webVitals</span
-                                ><span class="tsd-signature-symbol">?:</span>
-                                <span class="tsd-signature-type">boolean</span>
-                            </div>
-                            <aside class="tsd-sources">
-                                <ul>
-                                    <li>
-                                        Defined in
-                                        <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L200"
-                                            >types.ts:200</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L259"
+                                            >types.ts:259</a
                                         >
                                     </li>
                                 </ul>
@@ -889,82 +732,62 @@
                                     >Properties
                                 </summary>
                                 <div>
-                                    <a href="#blockbots"
+                                    <a href="#event_name"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>block<wbr />Bots</span></a
-                                    ><a href="#domain"
+                                        ><span>event_<wbr />name</span></a
+                                    ><a href="#hostname"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>domain</span></a
-                                    ><a href="#excludedcountries"
+                                        ><span>hostname</span></a
+                                    ><a href="#ip_address"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>excluded<wbr />Countries</span></a
-                                    ><a href="#excludedips"
+                                        ><span>ip_<wbr />address</span></a
+                                    ><a href="#language"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>excluded<wbr />I<wbr />Ps</span></a
-                                    ><a href="#name"
+                                        ><span>language</span></a
+                                    ><a href="#page_title"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>name</span></a
-                                    ><a href="#public"
+                                        ><span>page_<wbr />title</span></a
+                                    ><a href="#pathname"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>public</span></a
-                                    ><a href="#saltuserids"
+                                        ><span>pathname</span></a
+                                    ><a href="#properties"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>salt<wbr />User<wbr />Ids</span></a
-                                    ><a href="#sessionreplay"
+                                        ><span>properties</span></a
+                                    ><a href="#querystring"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>session<wbr />Replay</span></a
-                                    ><a href="#tags"
+                                        ><span>querystring</span></a
+                                    ><a href="#referrer"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>tags</span></a
-                                    ><a href="#trackbuttonclicks"
+                                        ><span>referrer</span></a
+                                    ><a href="#screenheight"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Button<wbr />Clicks</span></a
-                                    ><a href="#trackcopy"
+                                        ><span>screen<wbr />Height</span></a
+                                    ><a href="#screenwidth"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Copy</span></a
-                                    ><a href="#trackerrors"
+                                        ><span>screen<wbr />Width</span></a
+                                    ><a href="#type"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Errors</span></a
-                                    ><a href="#trackforminteractions"
+                                        ><span>type</span></a
+                                    ><a href="#user_agent"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Form<wbr />Interactions</span></a
-                                    ><a href="#trackinitialpageview"
+                                        ><span>user_<wbr />agent</span></a
+                                    ><a href="#user_id"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Initial<wbr />Page<wbr />View</span></a
-                                    ><a href="#trackip"
-                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                            <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Ip</span></a
-                                    ><a href="#trackoutbound"
-                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                            <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Outbound</span></a
-                                    ><a href="#trackspanavigation"
-                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                            <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Spa<wbr />Navigation</span></a
-                                    ><a href="#trackurlparams"
-                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                            <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>track<wbr />Url<wbr />Params</span></a
-                                    ><a href="#webvitals"
-                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
-                                            <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>web<wbr />Vitals</span></a
+                                        ><span>user_<wbr />id</span></a
                                     >
                                 </div>
                             </details>

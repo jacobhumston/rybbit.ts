@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="x-ua-compatible" content="IE=edge" />
-        <title>UpdatePrivateLinkRequestBody | rybbit.ts</title>
+        <title>RestConfig | rybbit.ts</title>
         <meta name="description" content="Documentation for rybbit.ts" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../assets/style.css" />
@@ -57,24 +57,26 @@
             <div class="col-content">
                 <div class="tsd-page-title">
                     <ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-                        <li><a href="" aria-current="page">UpdatePrivateLinkRequestBody</a></li>
+                        <li><a href="" aria-current="page">RestConfig</a></li>
                     </ul>
-                    <h1>Interface UpdatePrivateLinkRequestBody</h1>
+                    <h1>Interface RestConfig</h1>
                 </div>
                 <section class="tsd-panel tsd-comment">
                     <div class="tsd-comment tsd-typography">
-                        <p>Request body for <code>updatePrivateLink</code>.</p>
+                        <p>Config options for the <code>Rest</code> class.</p>
                     </div>
                 </section>
                 <div class="tsd-signature">
                     <span class="tsd-signature-keyword">interface</span>
-                    <span class="tsd-kind-interface">UpdatePrivateLinkRequestBody</span>
-                    <span class="tsd-signature-symbol">{</span><br />    <a class="tsd-kind-property" href="#action"
-                        >action</a
-                    ><span class="tsd-signature-symbol">:</span>
-                    <span class="tsd-signature-type">&quot;revoke_private_link_key&quot;</span>
-                    <span class="tsd-signature-symbol">|</span>
-                    <span class="tsd-signature-type">&quot;generate_private_link_key&quot;</span
+                    <span class="tsd-kind-interface">RestConfig</span> <span class="tsd-signature-symbol">{</span
+                    ><br />    <a class="tsd-kind-property" href="#apikey">apiKey</a
+                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#domain"
+                        >domain</a
+                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
+                    ><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#siteid"
+                        >siteId</a
+                    ><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span
                     ><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
                 </div>
                 <aside class="tsd-sources">
@@ -82,8 +84,8 @@
                         <li>
                             Defined in
                             <a
-                                href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L186"
-                                >types.ts:186</a
+                                href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L136"
+                                >types.ts:136</a
                             >
                         </li>
                     </ul>
@@ -101,10 +103,20 @@
                                 <section class="tsd-index-section">
                                     <h3 class="tsd-index-heading">Properties</h3>
                                     <div class="tsd-index-list">
-                                        <a href="#action" class="tsd-index-link"
+                                        <a href="#apikey" class="tsd-index-link"
                                             ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                                 <use href="../assets/icons.svg#icon-1024"></use></svg
-                                            ><span>action</span></a
+                                            ><span>api<wbr />Key</span></a
+                                        >
+                                        <a href="#domain" class="tsd-index-link"
+                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
+                                                <use href="../assets/icons.svg#icon-1024"></use></svg
+                                            ><span>domain</span></a
+                                        >
+                                        <a href="#siteid" class="tsd-index-link"
+                                            ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
+                                                <use href="../assets/icons.svg#icon-1024"></use></svg
+                                            ><span>site<wbr />Id</span></a
                                         >
                                     </div>
                                 </section>
@@ -121,26 +133,75 @@
                     </summary>
                     <section>
                         <section class="tsd-panel tsd-member">
-                            <h3 class="tsd-anchor-link" id="action">
-                                <span>action</span
-                                ><a href="#action" aria-label="Permalink" class="tsd-anchor-icon"
+                            <h3 class="tsd-anchor-link" id="apikey">
+                                <span>api<wbr />Key</span
+                                ><a href="#apikey" aria-label="Permalink" class="tsd-anchor-icon"
                                     ><svg viewBox="0 0 24 24" aria-hidden="true">
                                         <use href="../assets/icons.svg#icon-anchor"></use></svg
                                 ></a>
                             </h3>
                             <div class="tsd-signature">
-                                <span class="tsd-kind-property">action</span><span class="tsd-signature-symbol">:</span>
-                                <span class="tsd-signature-type">&quot;revoke_private_link_key&quot;</span>
-                                <span class="tsd-signature-symbol">|</span>
-                                <span class="tsd-signature-type">&quot;generate_private_link_key&quot;</span>
+                                <span class="tsd-kind-property">apiKey</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">string</span>
                             </div>
+                            <div class="tsd-comment tsd-typography"><p>API key for your rybbit account.</p></div>
                             <aside class="tsd-sources">
                                 <ul>
                                     <li>
                                         Defined in
                                         <a
-                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L187"
-                                            >types.ts:187</a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L142"
+                                            >types.ts:142</a
+                                        >
+                                    </li>
+                                </ul>
+                            </aside>
+                        </section>
+                        <section class="tsd-panel tsd-member">
+                            <h3 class="tsd-anchor-link" id="domain">
+                                <span>domain</span
+                                ><a href="#domain" aria-label="Permalink" class="tsd-anchor-icon"
+                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
+                                ></a>
+                            </h3>
+                            <div class="tsd-signature">
+                                <span class="tsd-kind-property">domain</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">string</span>
+                            </div>
+                            <div class="tsd-comment tsd-typography"><p>Domain for your rybbit instance.</p></div>
+                            <aside class="tsd-sources">
+                                <ul>
+                                    <li>
+                                        Defined in
+                                        <a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L138"
+                                            >types.ts:138</a
+                                        >
+                                    </li>
+                                </ul>
+                            </aside>
+                        </section>
+                        <section class="tsd-panel tsd-member">
+                            <h3 class="tsd-anchor-link" id="siteid">
+                                <span>site<wbr />Id</span
+                                ><a href="#siteid" aria-label="Permalink" class="tsd-anchor-icon"
+                                    ><svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="../assets/icons.svg#icon-anchor"></use></svg
+                                ></a>
+                            </h3>
+                            <div class="tsd-signature">
+                                <span class="tsd-kind-property">siteId</span><span class="tsd-signature-symbol">:</span>
+                                <span class="tsd-signature-type">number</span>
+                            </div>
+                            <div class="tsd-comment tsd-typography"><p>ID of the tracked site.</p></div>
+                            <aside class="tsd-sources">
+                                <ul>
+                                    <li>
+                                        Defined in
+                                        <a
+                                            href="https://github.com/jacobhumston/rybbit.ts/blob/8b1c4646767c24354e3eafabd136943e0410c82b/src/types.ts#L140"
+                                            >types.ts:140</a
                                         >
                                     </li>
                                 </ul>
@@ -274,10 +335,18 @@
                                     >Properties
                                 </summary>
                                 <div>
-                                    <a href="#action"
+                                    <a href="#apikey"
                                         ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
                                             <use href="../assets/icons.svg#icon-1024"></use></svg
-                                        ><span>action</span></a
+                                        ><span>api<wbr />Key</span></a
+                                    ><a href="#domain"
+                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
+                                            <use href="../assets/icons.svg#icon-1024"></use></svg
+                                        ><span>domain</span></a
+                                    ><a href="#siteid"
+                                        ><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property">
+                                            <use href="../assets/icons.svg#icon-1024"></use></svg
+                                        ><span>site<wbr />Id</span></a
                                     >
                                 </div>
                             </details>
