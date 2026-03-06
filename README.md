@@ -30,7 +30,7 @@ const result = await analytics.track({
 
 // Result: { success: true }
 ```
-![custom-event](https://raw.githubusercontent.com/jacobhumston/rybbit.ts/refs/heads/main/.github/custom-event.png)
 
+![custom-event](https://raw.githubusercontent.com/jacobhumston/rybbit.ts/refs/heads/main/.github/custom-event.png)
 
 For more information, please see the documentation: [rybbit.lovely.sh](https://rybbit.lovely.sh)

@@ -1,4 +1,4 @@
-import { Rest } from './rest.js';
+import { Rest, type RouteMethods } from './rest.js';
 
 export type {
     Bucket,
@@ -33,6 +33,6 @@ export { toDateString, handleRejection } from './utility.js';
 export { Routes } from './endpoints.js';
 export { request, type ErrorResponse } from './requests.js';
 
-export { Rest };
+export { Rest, type RouteMethods };
 
 export default Rest;

@@ -21,7 +21,7 @@ import type {
 } from './types.js';
 
 /** Ensure `Rest` implements every method in `Routes`. */
-type RouteMethods = {
+export type RouteMethods = {
     [K in keyof Routes]: any;
 };
 
