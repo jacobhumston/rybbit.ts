@@ -13,8 +13,24 @@ npm install rybbit.ts
 ```ts
 import rybbit from 'rybbit.ts';
 
-const analytics = new rybbit('https://example.rybbit.com', 1, process.env.KEY);
-console.log(await analytics.getSite()); // logs site info
+// create a rest instance
+const analytics = new rybbit({
+    domain: 'https://example.rybbit.com',
+    siteId: 1,
+    apiKey: process.env.RYBBIT_API_KEY
+});
+
+// track a custom event
+const result = await analytics.track({
+    type: 'custom_event',
+    ip_address: '8.8.8.8',
+    event_name: 'server sided event',
+    properties: { test_property: 'yes' }
+});
+
+// Result: { success: true }
 ```
+![custom-event](https://raw.githubusercontent.com/jacobhumston/rybbit.ts/refs/heads/main/.github/custom-event.png)
+
 
 For more information, please see the documentation: [rybbit.lovely.sh](https://rybbit.lovely.sh)

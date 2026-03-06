@@ -24,7 +24,9 @@ export type {
     CreateFunnelRequestBody,
     CreateGoalRequestBody,
     GetFunnelStepSessionsRequestBody,
-    UpdateGoalRequestBody
+    UpdateGoalRequestBody,
+    RestConfig,
+    TrackRequestBody
 } from './types.js';
 
 export { toDateString, handleRejection } from './utility.js';

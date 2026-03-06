@@ -32,7 +32,8 @@ export function request<T>(
             method: method,
             body: body ? JSON.stringify(body) : undefined,
             headers: {
-                Authorization: `Bearer ${apiKey}`
+                Authorization: `Bearer ${apiKey}`,
+                'Content-Type': 'application/json'
             }
         }).catch((error) => reject({ status: -1, error: `${error}` }));
 

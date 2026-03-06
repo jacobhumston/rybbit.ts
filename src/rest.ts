@@ -11,8 +11,10 @@ import type {
     GetSiteResponse,
     Mode,
     Parameter,
+    RestConfig,
     SiteId,
     SuccessResponse,
+    TrackRequestBody,
     UpdateGoalRequestBody,
     UpdatePrivateLinkRequestBody,
     UpdateSiteConfigRequestBody
@@ -34,10 +36,10 @@ export class Rest implements RouteMethods {
     /** API key for this rest instance. */
     #apiKey: string;
 
-    constructor(domain: string, siteId: SiteId, apiKey: string) {
-        this.routes = new Routes(new URL(domain));
-        this.siteId = siteId;
-        this.#apiKey = apiKey;
+    constructor(config: RestConfig) {
+        this.routes = new Routes(new URL(config.domain));
+        this.siteId = config.siteId;
+        this.#apiKey = config.apiKey;
     }
 
     /**
@@ -304,7 +306,11 @@ export class Rest implements RouteMethods {
     }
 
     /** Track events, etc. */
-    async track(props: any): Promise<any> {
-        return this.request<any>('POST', this.routes.track(), props);
+    async track(payload: TrackRequestBody): Promise<SuccessResponse> {
+        if (typeof payload.properties === 'object') payload.properties = JSON.stringify(payload.properties);
+        return this.request<any>('POST', this.routes.track(), {
+            site_id: this.siteId.toString(),
+            ...payload
+        });
     }
 }

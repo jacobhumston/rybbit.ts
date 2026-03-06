@@ -132,6 +132,16 @@ export interface Filter {
 /** `siteId` of a site. */
 export type SiteId = number;
 
+/** Config options for the `Rest` class. */
+export interface RestConfig {
+    /** Domain for your rybbit instance. */
+    domain: string;
+    /** ID of the tracked site. */
+    siteId: SiteId;
+    /** API key for your rybbit account. */
+    apiKey: string;
+}
+
 /** Response from `getSite`. */
 export interface GetSiteResponse {
     id: string;
@@ -234,4 +244,22 @@ export interface GetFunnelStepSessionsRequestBody extends AnalyzeFunnelRequestBo
 /** Request body for `createFunnel`. */
 export interface CreateFunnelRequestBody extends AnalyzeFunnelRequestBody {
     name: string;
+}
+
+/** Request body for `track`. */
+export interface TrackRequestBody {
+    hostname?: string;
+    pathname?: string;
+    querystring?: string;
+    screenWidth?: number;
+    screenHeight?: number;
+    language?: string;
+    page_title?: string;
+    referrer?: string;
+    user_id?: string;
+    user_agent?: string;
+    ip_address?: string;
+    type: 'pageview' | 'custom_event';
+    event_name?: string;
+    properties?: Record<any, any> | string;
 }

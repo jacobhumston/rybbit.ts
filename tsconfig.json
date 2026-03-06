@@ -9,5 +9,5 @@
         "rootDir": "src/",
         "outDir": "dist/"
     },
-    "exclude": ["tools/", "dist/", "node_modules/", "docs/"]
+    "exclude": ["tools/", "dist/", "node_modules/", "docs/", "test.ts"]
 }
